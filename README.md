@@ -158,7 +158,12 @@ graph.start()
 
 ## Utils
 
-It includes several commands in the utils folder to generate doc, check errors and build minifyed version.
+It includes several commands in the utils folder to generate doc, check errors and build minifyed version. To build the YUIdoc run the commands below and open the [index file](doc/index.html)
+
+```sh
+npm -g install yuidocjs
+./utils/generate_doc.sh
+```
 
 ## Demo
 
