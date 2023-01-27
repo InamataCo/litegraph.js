@@ -178,6 +178,8 @@ Open your browser and point it to [http://localhost:8000/](http://localhost:8000
 
 You can write any feedback to javi.agenjo@gmail.com
 
+Hello there!
+
 ## Contributors
 
 - kriffe
@@ -187,3 +189,17 @@ You can write any feedback to javi.agenjo@gmail.com
 - coderofsalvation
 - ilyabesk
 - gausszhou
+
+## Release
+
+To dry run publishing a new release run:
+
+```sh
+npm run release -- <major/minor/patch> --dry-run
+```
+
+To publish a new release run:
+
+```sh
+npm run release -- <major/minor/patch> --npm.otp=XXXXXX
+```
