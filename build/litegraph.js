@@ -7483,8 +7483,8 @@ LGraphNode.prototype.executeAction = function(action)
         	clientY_rel = e.clientY;
         }
     	
-        e.deltaX = clientX_rel - this.last_mouse_position[0];
-        e.deltaY = clientY_rel- this.last_mouse_position[1];
+        // e.deltaX = clientX_rel - this.last_mouse_position[0];
+        // e.deltaY = clientY_rel- this.last_mouse_position[1];
 
         this.last_mouse_position[0] = clientX_rel;
         this.last_mouse_position[1] = clientY_rel;
@@ -15606,7 +15606,7 @@ if (typeof exports != "undefined") {
     };
 
     NodeScript.title = "Script";
-    NodeScript.desc = "executes a code (max 100 characters)";
+    NodeScript.desc = "executes a code (max 256 characters)";
 
     NodeScript.widgets_info = {
         onExecute: { type: "code" }
