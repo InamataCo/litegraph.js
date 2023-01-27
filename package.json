@@ -46,7 +46,7 @@
     },
     "release-it": {
         "hooks": {
-            "after:bump": "npm run prebuild && npm run build"
+            "after:bump": "npm run prebuild && ./utils/build.sh"
         },
         "github": {
             "release": true
