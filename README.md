@@ -1,6 +1,6 @@
 # litegraph.js_fork
 
-> *Fork of the [litegraph.js](https://github.com/jagenjo/litegraph.js/) library with an updated npm package. Was created due to lack of npm updates and openness to merge requests. To be deprecated if this changes.*
+> *Fork of the [litegraph.js](https://github.com/jagenjo/litegraph.js/) library with an updated [npm package](https://www.npmjs.com/package/@inamata-co/litegraph.js_fork). It was created due to limited npm updates and merge requests. To be deprecated if this changes.*
 
 A library in Javascript to create graphs in the browser similar to Unreal Blueprints. Nodes can be programmed easily and it includes an editor to construct and tests the graphs.
 
