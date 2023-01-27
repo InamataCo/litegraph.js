@@ -1,4 +1,6 @@
-# litegraph.js
+# litegraph.js_fork
+
+> *Fork of the [litegraph.js](https://github.com/jagenjo/litegraph.js/) library with an updated npm package. Was created due to lack of npm updates and openness to merge requests. To be deprecated if this changes.*
 
 A library in Javascript to create graphs in the browser similar to Unreal Blueprints. Nodes can be programmed easily and it includes an editor to construct and tests the graphs.
 
@@ -9,6 +11,7 @@ Try it in the [demo site](https://tamats.com/projects/litegraph/editor).
 ![Node Graph](imgs/node_graph_example.png "WebGLStudio")
 
 ## Features
+
 - Renders on Canvas2D (zoom in/out and panning, easy to render complex interfaces, can be used inside a WebGLTexture)
 - Easy to use editor (searchbox, keyboard shortcuts, multiple selection, context menu, ...)
 - Optimized to support hundreds of nodes per graph (on editor but also on execution)
@@ -22,7 +25,9 @@ Try it in the [demo site](https://tamats.com/projects/litegraph/editor).
 - Typescript support
 
 ## Nodes provided
+
 Although it is easy to create new node types, LiteGraph comes with some default nodes that could be useful for many cases:
+
 - Interface (Widgets)
 - Math (trigonometry, math operations)
 - Audio (AudioAPI and MIDI)
@@ -31,20 +36,21 @@ Although it is easy to create new node types, LiteGraph comes with some default 
 
 ## Installation
 
-You can install it using npm 
-```
+You can install it using npm
+
+```sh
 npm install litegraph.js
 ```
 
 Or downloading the ```build/litegraph.js``` and ```css/litegraph.css``` version from this repository.
 
-## First project ##
+## First project
 
 ```html
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="litegraph.css">
-	<script type="text/javascript" src="litegraph.js"></script>
+  <link rel="stylesheet" type="text/css" href="litegraph.css">
+  <script type="text/javascript" src="litegraph.js"></script>
 </head>
 <body style='width:100%; height:100%'>
 <canvas id='mycanvas' width='1024' height='720' style='border: 1px solid'></canvas>
@@ -136,7 +142,6 @@ node_time.connect( 0, node_console, 1 );
 graph.start()
 ```
 
-
 ## Projects using it
 
 ### [webglstudio.org](http://webglstudio.org)
@@ -152,14 +157,13 @@ graph.start()
 ![MyNodes](imgs/mynodes.png "MyNodes")
 
 ## Utils
------
 
 It includes several commands in the utils folder to generate doc, check errors and build minifyed version.
 
-
 ## Demo
------
+
 The demo includes some examples of graphs. In order to try them you can visit [demo site](http://tamats.com/projects/litegraph/editor) or install it on your local computer, to do so you need `git`, `node` and `npm`. Given those dependencies are installed, run the following commands to try it out:
+
 ```sh
 $ git clone https://github.com/jagenjo/litegraph.js.git
 $ cd litegraph.js
@@ -167,10 +171,10 @@ $ npm install
 $ node utils/server.js
 Example app listening on port 80!
 ```
-Open your browser and point it to http://localhost:8000/. You can select a demo from the dropdown at the top of the page.
+
+Open your browser and point it to [http://localhost:8000/](http://localhost:8000/). You can select a demo from the dropdown at the top of the page.
 
 ## Feedback
---------
 
 You can write any feedback to javi.agenjo@gmail.com
 
@@ -183,6 +187,3 @@ You can write any feedback to javi.agenjo@gmail.com
 - coderofsalvation
 - ilyabesk
 - gausszhou
-
-
-
