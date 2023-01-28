@@ -85,7 +85,7 @@
 
 
         <div class="foundat">
-            Defined in: <a href="../files/.._src_litegraph.js.html#l6"><code>..&#x2F;src&#x2F;litegraph.js:6</code></a>
+            Defined in: <a href="../files/.._src_litegraph.js.html#l7"><code>..&#x2F;src&#x2F;litegraph.js:7</code></a>
         </div>
 
 
@@ -114,7 +114,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l6"><code>..&#x2F;src&#x2F;litegraph.js:6</code></a>
+        <a href="../files/.._src_litegraph.js.html#l7"><code>..&#x2F;src&#x2F;litegraph.js:7</code></a>
         </p>
 
 
@@ -155,6 +155,10 @@
 
                             </li>
                             <li class="index-item method">
+                                <a href="#method_fetchFile">fetchFile</a>
+
+                            </li>
+                            <li class="index-item method">
                                 <a href="#method_getNodeType">getNodeType</a>
 
                             </li>
@@ -167,7 +171,23 @@
 
                             </li>
                             <li class="index-item method">
+                                <a href="#method_isValidConnection">isValidConnection</a>
+
+                            </li>
+                            <li class="index-item method">
                                 <a href="#method_registerNodeType">registerNodeType</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_registerSearchboxExtra">registerSearchboxExtra</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_registerSlotType">registerSlotType</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_unregisterNodeType">unregisterNodeType</a>
 
                             </li>
                             <li class="index-item method">
@@ -205,7 +225,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l193"><code>..&#x2F;src&#x2F;litegraph.js:193</code></a>
+        <a href="../files/.._src_litegraph.js.html#l388"><code>..&#x2F;src&#x2F;litegraph.js:388</code></a>
         </p>
 
 
@@ -265,7 +285,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l211"><code>..&#x2F;src&#x2F;litegraph.js:211</code></a>
+        <a href="../files/.._src_litegraph.js.html#l405"><code>..&#x2F;src&#x2F;litegraph.js:405</code></a>
         </p>
 
 
@@ -320,6 +340,114 @@
 
 
 </div>
+<div id="method_fetchFile" class="method item">
+    <h3 class="name"><code>fetchFile</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>url</code>
+                </li>
+                <li class="arg">
+                        <code>type</code>
+                </li>
+                <li class="arg">
+                        <code>on_complete</code>
+                </li>
+                <li class="arg">
+                        <code>on_error</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">FileReader | Promise</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/.._src_litegraph.js.html#l668"><code>..&#x2F;src&#x2F;litegraph.js:668</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Wrapper to load files (from url using fetch or from file using FileReader)</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">url</code>
+                        <span class="type">String | File | Blob</span>
+
+
+                    <div class="param-description">
+                        <p>the url of the file (or the file itself)</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">type</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>an string to know how to fetch it: &quot;text&quot;,&quot;arraybuffer&quot;,&quot;json&quot;,&quot;blob&quot;</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">on_complete</code>
+                        <span class="type">Function</span>
+
+
+                    <div class="param-description">
+                        <p>callback(data)</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">on_error</code>
+                        <span class="type">Function</span>
+
+
+                    <div class="param-description">
+                        <p>in case of an error</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">FileReader | Promise</span>:
+                    <p>returns the object used to</p>
+
+            </div>
+        </div>
+
+
+</div>
 <div id="method_getNodeType" class="method item">
     <h3 class="name"><code>getNodeType</code></h3>
 
@@ -344,7 +472,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l270"><code>..&#x2F;src&#x2F;litegraph.js:270</code></a>
+        <a href="../files/.._src_litegraph.js.html#l481"><code>..&#x2F;src&#x2F;litegraph.js:481</code></a>
         </p>
 
 
@@ -410,7 +538,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l281"><code>..&#x2F;src&#x2F;litegraph.js:281</code></a>
+        <a href="../files/.._src_litegraph.js.html#l491"><code>..&#x2F;src&#x2F;litegraph.js:491</code></a>
         </p>
 
 
@@ -455,7 +583,13 @@
 <div id="method_getNodeTypesCategories" class="method item">
     <h3 class="name"><code>getNodeTypesCategories</code></h3>
 
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>filter</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
 
         <span class="returns-inline">
             <span class="type">Array</span>
@@ -470,7 +604,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l309"><code>..&#x2F;src&#x2F;litegraph.js:309</code></a>
+        <a href="../files/.._src_litegraph.js.html#l522"><code>..&#x2F;src&#x2F;litegraph.js:522</code></a>
         </p>
 
 
@@ -482,6 +616,23 @@
 
     </div>
 
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">filter</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>only nodes with ctor.filter equal can be shown</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
 
         <div class="returns">
             <h4>Returns:</h4>
@@ -489,6 +640,84 @@
             <div class="returns-description">
                         <span class="type">Array</span>:
                     <p>array with all the names of the categories</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_isValidConnection" class="method item">
+    <h3 class="name"><code>isValidConnection</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>type_a</code>
+                </li>
+                <li class="arg">
+                        <code>type_b</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/.._src_litegraph.js.html#l607"><code>..&#x2F;src&#x2F;litegraph.js:607</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Returns if the types of two slots are compatible (taking into account wildcards, etc)</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">type_a</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">type_b</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Boolean</span>:
+                    <p>true if they can be connected</p>
 
             </div>
         </div>
@@ -519,7 +748,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l93"><code>..&#x2F;src&#x2F;litegraph.js:93</code></a>
+        <a href="../files/.._src_litegraph.js.html#l143"><code>..&#x2F;src&#x2F;litegraph.js:143</code></a>
         </p>
 
 
@@ -563,6 +792,222 @@
 
 
 </div>
+<div id="method_registerSearchboxExtra" class="method item">
+    <h3 class="name"><code>registerSearchboxExtra</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>node_type</code>
+                </li>
+                <li class="arg">
+                        <code>description</code>
+                </li>
+                <li class="arg">
+                        <code>data</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/.._src_litegraph.js.html#l652"><code>..&#x2F;src&#x2F;litegraph.js:652</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Register a string in the search box so when the user types it it will recommend this node</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">node_type</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>the node recommended</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">description</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>text to show next to it</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">data</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>it could contain info of how the node should be configured</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Boolean</span>:
+                    <p>true if they can be connected</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_registerSlotType" class="method item">
+    <h3 class="name"><code>registerSlotType</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>type</code>
+                </li>
+                <li class="arg">
+                        <code>slot_type</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/.._src_litegraph.js.html#l283"><code>..&#x2F;src&#x2F;litegraph.js:283</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Save a slot type and his node</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">type</code>
+                        <span class="type">String | Object</span>
+
+
+                    <div class="param-description">
+                        <p>name of the node or the node constructor itself</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">slot_type</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>name of the slot type (variable type), eg. string, number, array, boolean, ..</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_unregisterNodeType" class="method item">
+    <h3 class="name"><code>unregisterNodeType</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>type</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/.._src_litegraph.js.html#l269"><code>..&#x2F;src&#x2F;litegraph.js:269</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>removes a node type from the system</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">type</code>
+                        <span class="type">String | Object</span>
+
+
+                    <div class="param-description">
+                        <p>name of the node or the node constructor itself</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
 <div id="method_wrapFunctionAsNode" class="method item">
     <h3 class="name"><code>wrapFunctionAsNode</code></h3>
 
@@ -596,7 +1041,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l160"><code>..&#x2F;src&#x2F;litegraph.js:160</code></a>
+        <a href="../files/.._src_litegraph.js.html#l327"><code>..&#x2F;src&#x2F;litegraph.js:327</code></a>
         </p>
 
 
@@ -604,7 +1049,7 @@
     </div>
 
     <div class="description">
-        <p>Create a new node type by passing a function, it wraps it with a propper class and generates inputs according to the parameters of the function.
+        <p>Create a new nodetype by passing a function, it wraps it with a proper class and generates inputs according to the parameters of the function.
 Useful to wrap simple methods that do not require properties, and that only process some input to generate an output.</p>
 
     </div>

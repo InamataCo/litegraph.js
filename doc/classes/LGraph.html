@@ -85,7 +85,7 @@
 
 
         <div class="foundat">
-            Defined in: <a href="../files/.._src_litegraph.js.html#l438"><code>..&#x2F;src&#x2F;litegraph.js:438</code></a>
+            Defined in: <a href="../files/.._src_litegraph.js.html#l753"><code>..&#x2F;src&#x2F;litegraph.js:753</code></a>
         </div>
 
 
@@ -93,7 +93,11 @@
 
 
 <div class="box intro">
-    <p>LGraph is the class that contain a full graph. We instantiate one and add nodes to it, and then we can run the execution loop.</p>
+    <p>LGraph is the class that contain a full graph. We instantiate one and add nodes to it, and then we can run the execution loop.
+supported callbacks:
++ onNodeAdded: when a new node is added to the graph
++ onNodeRemoved: when a node inside this graph is removed
++ onNodeConnectionChange: some connection has changed in the graph (connected or disconnected)</p>
 
 </div>
 
@@ -120,7 +124,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l438"><code>..&#x2F;src&#x2F;litegraph.js:438</code></a>
+        <a href="../files/.._src_litegraph.js.html#l753"><code>..&#x2F;src&#x2F;litegraph.js:753</code></a>
         </p>
 
 
@@ -198,6 +202,10 @@
 
                             </li>
                             <li class="index-item method">
+                                <a href="#method_checkNodeTypes">checkNodeTypes</a>
+
+                            </li>
+                            <li class="index-item method">
                                 <a href="#method_clear">clear</a>
 
                             </li>
@@ -211,6 +219,10 @@
                             </li>
                             <li class="index-item method">
                                 <a href="#method_detachCanvas">detachCanvas</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_findNodeByTitle">findNodeByTitle</a>
 
                             </li>
                             <li class="index-item method">
@@ -352,7 +364,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1004"><code>..&#x2F;src&#x2F;litegraph.js:1004</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1385"><code>..&#x2F;src&#x2F;litegraph.js:1385</code></a>
         </p>
 
 
@@ -360,7 +372,7 @@
     </div>
 
     <div class="description">
-        <p>Adds a new node instasnce to this graph</p>
+        <p>Adds a new node instance to this graph</p>
 
     </div>
 
@@ -412,7 +424,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1251"><code>..&#x2F;src&#x2F;litegraph.js:1251</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1721"><code>..&#x2F;src&#x2F;litegraph.js:1721</code></a>
         </p>
 
 
@@ -492,7 +504,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1375"><code>..&#x2F;src&#x2F;litegraph.js:1375</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1860"><code>..&#x2F;src&#x2F;litegraph.js:1860</code></a>
         </p>
 
 
@@ -559,7 +571,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l885"><code>..&#x2F;src&#x2F;litegraph.js:885</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1258"><code>..&#x2F;src&#x2F;litegraph.js:1258</code></a>
         </p>
 
 
@@ -596,7 +608,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l531"><code>..&#x2F;src&#x2F;litegraph.js:531</code></a>
+        <a href="../files/.._src_litegraph.js.html#l859"><code>..&#x2F;src&#x2F;litegraph.js:859</code></a>
         </p>
 
 
@@ -652,7 +664,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1333"><code>..&#x2F;src&#x2F;litegraph.js:1333</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1810"><code>..&#x2F;src&#x2F;litegraph.js:1810</code></a>
         </p>
 
 
@@ -718,7 +730,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1450"><code>..&#x2F;src&#x2F;litegraph.js:1450</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1937"><code>..&#x2F;src&#x2F;litegraph.js:1937</code></a>
         </p>
 
 
@@ -760,6 +772,38 @@
 
 
 </div>
+<div id="method_checkNodeTypes" class="method item">
+    <h3 class="name"><code>checkNodeTypes</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/.._src_litegraph.js.html#l1667"><code>..&#x2F;src&#x2F;litegraph.js:1667</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Checks that the node type matches the node type registered, used when replacing a nodetype by a newer version during execution
+this replaces the ones using the old version with the new version</p>
+
+    </div>
+
+
+
+
+</div>
 <div id="method_clear" class="method item">
     <h3 class="name"><code>clear</code></h3>
 
@@ -775,7 +819,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l468"><code>..&#x2F;src&#x2F;litegraph.js:468</code></a>
+        <a href="../files/.._src_litegraph.js.html#l790"><code>..&#x2F;src&#x2F;litegraph.js:790</code></a>
         </p>
 
 
@@ -806,7 +850,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1533"><code>..&#x2F;src&#x2F;litegraph.js:1533</code></a>
+        <a href="../files/.._src_litegraph.js.html#l2043"><code>..&#x2F;src&#x2F;litegraph.js:2043</code></a>
         </p>
 
 
@@ -846,7 +890,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1619"><code>..&#x2F;src&#x2F;litegraph.js:1619</code></a>
+        <a href="../files/.._src_litegraph.js.html#l2145"><code>..&#x2F;src&#x2F;litegraph.js:2145</code></a>
         </p>
 
 
@@ -911,7 +955,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l550"><code>..&#x2F;src&#x2F;litegraph.js:550</code></a>
+        <a href="../files/.._src_litegraph.js.html#l881"><code>..&#x2F;src&#x2F;litegraph.js:881</code></a>
         </p>
 
 
@@ -943,6 +987,72 @@
 
 
 </div>
+<div id="method_findNodeByTitle" class="method item">
+    <h3 class="name"><code>findNodeByTitle</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>name</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Node</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/.._src_litegraph.js.html#l1594"><code>..&#x2F;src&#x2F;litegraph.js:1594</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Returns the first node that matches a name in its title</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">name</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>the name of the node to search</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Node</span>:
+                    <p>the node or null</p>
+
+            </div>
+        </div>
+
+
+</div>
 <div id="method_findNodesByClass" class="method item">
     <h3 class="name"><code>findNodesByClass</code></h3>
 
@@ -967,7 +1077,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1162"><code>..&#x2F;src&#x2F;litegraph.js:1162</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1559"><code>..&#x2F;src&#x2F;litegraph.js:1559</code></a>
         </p>
 
 
@@ -1033,7 +1143,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1195"><code>..&#x2F;src&#x2F;litegraph.js:1195</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1609"><code>..&#x2F;src&#x2F;litegraph.js:1609</code></a>
         </p>
 
 
@@ -1099,7 +1209,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1178"><code>..&#x2F;src&#x2F;litegraph.js:1178</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1576"><code>..&#x2F;src&#x2F;litegraph.js:1576</code></a>
         </p>
 
 
@@ -1159,7 +1269,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l848"><code>..&#x2F;src&#x2F;litegraph.js:848</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1223"><code>..&#x2F;src&#x2F;litegraph.js:1223</code></a>
         </p>
 
 
@@ -1168,7 +1278,7 @@
 
     <div class="description">
         <p>Returns all the nodes that could affect this one (ancestors) by crawling all the inputs recursively.
-It doesnt include the node itself</p>
+It doesn't include the node itself</p>
 
     </div>
 
@@ -1203,7 +1313,7 @@ It doesnt include the node itself</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l950"><code>..&#x2F;src&#x2F;litegraph.js:950</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1321"><code>..&#x2F;src&#x2F;litegraph.js:1321</code></a>
         </p>
 
 
@@ -1247,7 +1357,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l939"><code>..&#x2F;src&#x2F;litegraph.js:939</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1311"><code>..&#x2F;src&#x2F;litegraph.js:1311</code></a>
         </p>
 
 
@@ -1299,7 +1409,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1231"><code>..&#x2F;src&#x2F;litegraph.js:1231</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1650"><code>..&#x2F;src&#x2F;litegraph.js:1650</code></a>
         </p>
 
 
@@ -1376,7 +1486,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1288"><code>..&#x2F;src&#x2F;litegraph.js:1288</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1763"><code>..&#x2F;src&#x2F;litegraph.js:1763</code></a>
         </p>
 
 
@@ -1438,7 +1548,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1149"><code>..&#x2F;src&#x2F;litegraph.js:1149</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1546"><code>..&#x2F;src&#x2F;litegraph.js:1546</code></a>
         </p>
 
 
@@ -1500,7 +1610,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1211"><code>..&#x2F;src&#x2F;litegraph.js:1211</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1625"><code>..&#x2F;src&#x2F;litegraph.js:1625</code></a>
         </p>
 
 
@@ -1588,7 +1698,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1408"><code>..&#x2F;src&#x2F;litegraph.js:1408</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1894"><code>..&#x2F;src&#x2F;litegraph.js:1894</code></a>
         </p>
 
 
@@ -1647,7 +1757,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l929"><code>..&#x2F;src&#x2F;litegraph.js:929</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1302"><code>..&#x2F;src&#x2F;litegraph.js:1302</code></a>
         </p>
 
 
@@ -1687,7 +1797,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1514"><code>..&#x2F;src&#x2F;litegraph.js:1514</code></a>
+        <a href="../files/.._src_litegraph.js.html#l2024"><code>..&#x2F;src&#x2F;litegraph.js:2024</code></a>
         </p>
 
 
@@ -1724,7 +1834,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1068"><code>..&#x2F;src&#x2F;litegraph.js:1068</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1453"><code>..&#x2F;src&#x2F;litegraph.js:1453</code></a>
         </p>
 
 
@@ -1781,7 +1891,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1353"><code>..&#x2F;src&#x2F;litegraph.js:1353</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1836"><code>..&#x2F;src&#x2F;litegraph.js:1836</code></a>
         </p>
 
 
@@ -1844,7 +1954,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1565"><code>..&#x2F;src&#x2F;litegraph.js:1565</code></a>
+        <a href="../files/.._src_litegraph.js.html#l2074"><code>..&#x2F;src&#x2F;litegraph.js:2074</code></a>
         </p>
 
 
@@ -1897,7 +2007,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1470"><code>..&#x2F;src&#x2F;litegraph.js:1470</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1963"><code>..&#x2F;src&#x2F;litegraph.js:1963</code></a>
         </p>
 
 
@@ -1953,7 +2063,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1302"><code>..&#x2F;src&#x2F;litegraph.js:1302</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1777"><code>..&#x2F;src&#x2F;litegraph.js:1777</code></a>
         </p>
 
 
@@ -2019,7 +2129,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1422"><code>..&#x2F;src&#x2F;litegraph.js:1422</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1908"><code>..&#x2F;src&#x2F;litegraph.js:1908</code></a>
         </p>
 
 
@@ -2069,6 +2179,12 @@ if the nodes are using graphical actions</p>
                 <li class="arg">
                         <code>num</code>
                 </li>
+                <li class="arg">
+                        <code>do_not_catch_errors</code>
+                </li>
+                <li class="arg">
+                        <code>limit</code>
+                </li>
             </ul><span class="paren">)</span>
         </div>
 
@@ -2082,7 +2198,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l634"><code>..&#x2F;src&#x2F;litegraph.js:634</code></a>
+        <a href="../files/.._src_litegraph.js.html#l976"><code>..&#x2F;src&#x2F;litegraph.js:976</code></a>
         </p>
 
 
@@ -2105,6 +2221,28 @@ if the nodes are using graphical actions</p>
 
                     <div class="param-description">
                         <p>number of steps to run, default is 1</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">do_not_catch_errors</code>
+                        <span class="type">Boolean</span>
+
+
+                    <div class="param-description">
+                        <p>[optional] if you want to try/catch errors</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">limit</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                        <p>max number of nodes to execute (used to execute from start to a node)</p>
 
                     </div>
 
@@ -2139,7 +2277,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l962"><code>..&#x2F;src&#x2F;litegraph.js:962</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1332"><code>..&#x2F;src&#x2F;litegraph.js:1332</code></a>
         </p>
 
 
@@ -2201,7 +2339,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1582"><code>..&#x2F;src&#x2F;litegraph.js:1582</code></a>
+        <a href="../files/.._src_litegraph.js.html#l2091"><code>..&#x2F;src&#x2F;litegraph.js:2091</code></a>
         </p>
 
 
@@ -2250,7 +2388,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1274"><code>..&#x2F;src&#x2F;litegraph.js:1274</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1749"><code>..&#x2F;src&#x2F;litegraph.js:1749</code></a>
         </p>
 
 
@@ -2316,7 +2454,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l1394"><code>..&#x2F;src&#x2F;litegraph.js:1394</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1880"><code>..&#x2F;src&#x2F;litegraph.js:1880</code></a>
         </p>
 
 
@@ -2379,7 +2517,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l567"><code>..&#x2F;src&#x2F;litegraph.js:567</code></a>
+        <a href="../files/.._src_litegraph.js.html#l899"><code>..&#x2F;src&#x2F;litegraph.js:899</code></a>
         </p>
 
 
@@ -2427,7 +2565,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l609"><code>..&#x2F;src&#x2F;litegraph.js:609</code></a>
+        <a href="../files/.._src_litegraph.js.html#l950"><code>..&#x2F;src&#x2F;litegraph.js:950</code></a>
         </p>
 
 
@@ -2458,7 +2596,7 @@ if the nodes are using graphical actions</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/.._src_litegraph.js.html#l716"><code>..&#x2F;src&#x2F;litegraph.js:716</code></a>
+        <a href="../files/.._src_litegraph.js.html#l1067"><code>..&#x2F;src&#x2F;litegraph.js:1067</code></a>
         </p>
 
 
