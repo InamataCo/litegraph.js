@@ -1,5 +1,5 @@
 {
-    "name": "@inamata-co/litegraph.js_fork",
+    "name": "@inamata-co/litegraph.js",
     "version": "0.8.3",
     "description": "A graph node editor similar to PD or UDK Blueprints. It works in an HTML5 Canvas and allows to export graphs to be included in applications.",
     "main": "build/litegraph.js",
@@ -20,7 +20,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/InamataCo/litegraph.js_fork.git"
+        "url": "git+https://github.com/InamataCo/litegraph.js.git"
     },
     "author": "jagenjo",
     "license": "MIT",
@@ -32,7 +32,7 @@
     "bugs": {
         "url": "https://github.com/jagenjo/litegraph.js/issues"
     },
-    "homepage": "https://github.com/InamataCo/litegraph.js_fork#readme",
+    "homepage": "https://github.com/InamataCo/litegraph.js#readme",
     "devDependencies": {
         "express": "^4.17.1",
         "google-closure-compiler": "^20171112.0.0",
@@ -45,6 +45,9 @@
         "rimraf": "^2.7.1"
     },
     "release-it": {
+        "publishConfig": {
+            "access": "public"
+        },
         "hooks": {
             "after:bump": "npm run prebuild && ./utils/build.sh && ./utils/generate_doc.sh"
         },

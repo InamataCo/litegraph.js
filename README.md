@@ -1,6 +1,6 @@
-# litegraph.js_fork
+# litegraph.js
 
-> *Fork of the [litegraph.js](https://github.com/jagenjo/litegraph.js/) library with an updated [npm package](https://www.npmjs.com/package/@inamata-co/litegraph.js_fork) and [documentation](https://inamataco.github.io/litegraph.js_fork/). It was created due to limited npm updates and merge requests. To be deprecated if this changes.*
+> *Fork of the [litegraph.js](https://github.com/jagenjo/litegraph.js/) library with an updated [npm package](https://www.npmjs.com/package/@inamata-co/litegraph.js), [documentation](https://inamataco.github.io/litegraph.js/) and [release procedure](#release). It was created due to limited npm updates and merge requests. To be deprecated if this changes. Commits and merge requests from the original repo are ported where possible.*
 
 A library in Javascript to create graphs in the browser similar to Unreal Blueprints. Nodes can be programmed easily and it includes an editor to construct and tests the graphs.
 
@@ -197,6 +197,8 @@ Hello there!
 
 ## Release
 
+Due to the lack of tests and other CI aspects, pre-releases are made available for 7 days before a version is released. This allows for wider testing and if no issues are reported, the new version is released.
+
 To dry run publishing a new release run:
 
 ```sh
@@ -206,5 +208,5 @@ npm run release -- <major/minor/patch> --dry-run
 To publish a new release run:
 
 ```sh
-npm run release -- <major/minor/patch> --npm.otp=XXXXXX
+npm run release
 ```
