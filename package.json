@@ -34,7 +34,6 @@
     },
     "homepage": "https://github.com/InamataCo/litegraph.js#readme",
     "devDependencies": {
-        "@j-ulrich/release-it-regex-bumper": "^4.1.1",
         "eslint": "^8.35.0",
         "express": "^4.17.1",
         "google-closure-compiler": "^20171112.0.0",
@@ -59,15 +58,6 @@
         },
         "github": {
             "release": true
-        },
-        "plugins": {
-            "@j-ulrich/release-it-regex-bumper": {
-                "out": {
-                    "file": "src/litegraph.js",
-                    "search": "    VERSION: \"(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?\",",
-                    "replace": "    VERSION: \"{{version}}\","
-                }
-            }
         }
     }
 }
