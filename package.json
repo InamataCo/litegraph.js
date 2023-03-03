@@ -54,7 +54,7 @@
         },
         "git": {
             "tagExclude": "*[-]*",
-            "changelog": "git log --pretty=format:\"* %s (%h)\" ${from}...${to} --invert-grep --grep='Release [0-9]*.[0-9]*.[0-9]*-'"
+            "changelog": "git log --pretty=format:\"* %s (%h)\" ${from}...${to} --invert-grep --grep='Release [0-9]*.[0-9]*.[0-9]*-\\|Merge remote-tracking branch'"
         },
         "github": {
             "release": true
