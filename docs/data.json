@@ -78,7 +78,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "../src/litegraph.js",
-            "line": 5674,
+            "line": 5684,
             "description": "marks as dirty the canvas, this way it will be rendered again",
             "is_constructor": 1,
             "params": [
@@ -109,7 +109,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "../src/litegraph.js",
-            "line": 13357,
+            "line": 13368,
             "description": "ContextMenu from LiteGUI",
             "is_constructor": 1,
             "params": [
@@ -1495,7 +1495,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3251,
+            "line": 3260,
             "description": "clears the trigger slot animation",
             "itemtype": "method",
             "name": "clearTriggeredSlot",
@@ -1515,7 +1515,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3288,
+            "line": 3297,
             "description": "changes node size and triggers callback",
             "itemtype": "method",
             "name": "setSize",
@@ -1530,7 +1530,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3300,
+            "line": 3309,
             "description": "add a new property to this node",
             "itemtype": "method",
             "name": "addProperty",
@@ -1560,7 +1560,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3333,
+            "line": 3342,
             "description": "add a new output slot to use in this node",
             "itemtype": "method",
             "name": "addOutput",
@@ -1585,7 +1585,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3363,
+            "line": 3372,
             "description": "add a new output slot to use in this node",
             "itemtype": "method",
             "name": "addOutputs",
@@ -1600,7 +1600,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3394,
+            "line": 3403,
             "description": "remove an existing output slot",
             "itemtype": "method",
             "name": "removeOutput",
@@ -1615,7 +1615,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3423,
+            "line": 3432,
             "description": "add a new input slot to use in this node",
             "itemtype": "method",
             "name": "addInput",
@@ -1640,7 +1640,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3456,
+            "line": 3465,
             "description": "add several new input slots in this node",
             "itemtype": "method",
             "name": "addInputs",
@@ -1655,7 +1655,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3486,
+            "line": 3495,
             "description": "remove an existing input slot",
             "itemtype": "method",
             "name": "removeInput",
@@ -1670,7 +1670,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3511,
+            "line": 3520,
             "description": "add an special connection to this node (used for special kinds of graphs)",
             "itemtype": "method",
             "name": "addConnection",
@@ -1700,7 +1700,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3531,
+            "line": 3540,
             "description": "computes the minimum size of a node according to its inputs and output slots",
             "itemtype": "method",
             "name": "computeSize",
@@ -1719,7 +1719,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3622,
+            "line": 3631,
             "description": "returns all the info available about a property of this node.",
             "itemtype": "method",
             "name": "getPropertyInfo",
@@ -1738,7 +1738,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3665,
+            "line": 3674,
             "description": "Defines a widget inside the node, it will be rendered on top of the node, you can control lots of properties",
             "itemtype": "method",
             "name": "addWidget",
@@ -1777,7 +1777,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3736,
+            "line": 3745,
             "description": "returns the bounding of the object, used for rendering purposes\nbounding is: [topleft_cornerx, topleft_cornery, width, height]",
             "itemtype": "method",
             "name": "getBounding",
@@ -1789,7 +1789,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3755,
+            "line": 3764,
             "description": "checks if a point is inside the shape of a node",
             "itemtype": "method",
             "name": "isPointInside",
@@ -1813,7 +1813,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3795,
+            "line": 3804,
             "description": "checks if a point is inside a node slot, and returns info about which slot",
             "itemtype": "method",
             "name": "getSlotInPosition",
@@ -1837,7 +1837,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3846,
+            "line": 3855,
             "description": "returns the input slot with a given name (used for dynamic slots), -1 if not found",
             "itemtype": "method",
             "name": "findInputSlot",
@@ -1861,7 +1861,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3865,
+            "line": 3874,
             "description": "returns the output slot with a given name (used for dynamic slots), -1 if not found",
             "itemtype": "method",
             "name": "findOutputSlot",
@@ -1885,7 +1885,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3887,
+            "line": 3896,
             "description": "returns the first free input slot",
             "itemtype": "method",
             "name": "findInputSlotFree",
@@ -1904,7 +1904,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3914,
+            "line": 3923,
             "description": "returns the first output slot free",
             "itemtype": "method",
             "name": "findOutputSlotFree",
@@ -1923,19 +1923,19 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3941,
+            "line": 3950,
             "description": "findSlotByType for INPUTS",
             "class": "LGraphNode"
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3948,
+            "line": 3957,
             "description": "findSlotByType for OUTPUTS",
             "class": "LGraphNode"
         },
         {
             "file": "../src/litegraph.js",
-            "line": 3955,
+            "line": 3964,
             "description": "returns the output (or input) slot with a given type, -1 if not found",
             "itemtype": "method",
             "name": "findSlotByType",
@@ -1969,7 +1969,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 4014,
+            "line": 4023,
             "description": "connect this node output to the input of another node BY TYPE",
             "itemtype": "method",
             "name": "connectByType",
@@ -1998,7 +1998,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 4067,
+            "line": 4076,
             "description": "connect this node input to the output of another node BY TYPE",
             "itemtype": "method",
             "name": "connectByType",
@@ -2027,7 +2027,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 4122,
+            "line": 4131,
             "description": "connect this node output to the input of another node",
             "itemtype": "method",
             "name": "connect",
@@ -2056,7 +2056,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 4327,
+            "line": 4336,
             "description": "disconnect one output to an specific node",
             "itemtype": "method",
             "name": "disconnectOutput",
@@ -2080,7 +2080,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 4484,
+            "line": 4493,
             "description": "disconnect one input",
             "itemtype": "method",
             "name": "disconnectInput",
@@ -2099,7 +2099,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 4577,
+            "line": 4586,
             "description": "returns the center of a connection point in canvas coords",
             "itemtype": "method",
             "name": "getConnectionPos",
@@ -2128,7 +2128,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 4783,
+            "line": 4792,
             "description": "Collapse the node to make it smaller on the canvas",
             "itemtype": "method",
             "name": "collapse",
@@ -2136,7 +2136,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 4800,
+            "line": 4809,
             "description": "Forces the node to do not move or realign on Z",
             "itemtype": "method",
             "name": "pin",
@@ -2144,7 +2144,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 5287,
+            "line": 5297,
             "description": "clears all the data inside",
             "itemtype": "method",
             "name": "clear",
@@ -2152,7 +2152,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 5333,
+            "line": 5343,
             "description": "assigns a graph, you can reassign graphs to the same canvas",
             "itemtype": "method",
             "name": "setGraph",
@@ -2167,7 +2167,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 5362,
+            "line": 5372,
             "description": "returns the top level graph (in case there are subgraphs open on the canvas)",
             "itemtype": "method",
             "name": "getTopGraph",
@@ -2179,7 +2179,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 5375,
+            "line": 5385,
             "description": "opens a graph contained inside a node in the current graph",
             "itemtype": "method",
             "name": "openSubgraph",
@@ -2194,7 +2194,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 5404,
+            "line": 5414,
             "description": "closes a subgraph contained inside a node",
             "itemtype": "method",
             "name": "closeSubgraph",
@@ -2209,7 +2209,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 5429,
+            "line": 5439,
             "description": "returns the visualy active graph (in case there are more in the stack)",
             "itemtype": "method",
             "name": "getCurrentGraph",
@@ -2221,7 +2221,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 5438,
+            "line": 5448,
             "description": "assigns a canvas",
             "itemtype": "method",
             "name": "setCanvas",
@@ -2236,7 +2236,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 5525,
+            "line": 5535,
             "description": "binds mouse, keyboard, touch and drag events to the canvas",
             "itemtype": "method",
             "name": "bindEvents",
@@ -2244,7 +2244,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 5590,
+            "line": 5600,
             "description": "unbinds mouse events from the canvas",
             "itemtype": "method",
             "name": "unbindEvents",
@@ -2252,7 +2252,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 5648,
+            "line": 5658,
             "description": "this function allows to render the canvas using WebGL instead of Canvas2D\nthis is useful if you plant to render 3D objects inside your nodes, it uses litegl.js for webgl and canvas2DtoWebGL to emulate the Canvas2D calls in webGL",
             "itemtype": "method",
             "name": "enableWebGL",
@@ -2260,7 +2260,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 5691,
+            "line": 5701,
             "description": "Used to attach the canvas in a popup",
             "itemtype": "method",
             "name": "getCanvasWindow",
@@ -2272,7 +2272,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 5705,
+            "line": 5715,
             "description": "starts rendering the content of the canvas when needed",
             "itemtype": "method",
             "name": "startRendering",
@@ -2280,7 +2280,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 5730,
+            "line": 5740,
             "description": "stops rendering the content of the canvas (to save resources)",
             "itemtype": "method",
             "name": "stopRendering",
@@ -2288,7 +2288,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 6240,
+            "line": 6248,
             "description": "Called when a mouse move event has to be processed",
             "itemtype": "method",
             "name": "processMouseMove",
@@ -2296,7 +2296,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 6493,
+            "line": 6501,
             "description": "Called when a mouse up event has to be processed",
             "itemtype": "method",
             "name": "processMouseUp",
@@ -2304,7 +2304,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 6805,
+            "line": 6813,
             "description": "Called when a mouse wheel event has to be processed",
             "itemtype": "method",
             "name": "processMouseWheel",
@@ -2312,7 +2312,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 6841,
+            "line": 6849,
             "description": "returns true if a position (in graph space) is on top of a node little corner box",
             "itemtype": "method",
             "name": "isOverNodeBox",
@@ -2320,7 +2320,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 6862,
+            "line": 6870,
             "description": "returns the INDEX if a position (in graph space) is on top of a node input slot",
             "itemtype": "method",
             "name": "isOverNodeInput",
@@ -2328,7 +2328,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 6908,
+            "line": 6916,
             "description": "returns the INDEX if a position (in graph space) is on top of a node output slot",
             "itemtype": "method",
             "name": "isOverNodeOuput",
@@ -2336,7 +2336,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 6954,
+            "line": 6962,
             "description": "process a key event",
             "itemtype": "method",
             "name": "processKey",
@@ -2344,7 +2344,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7166,
+            "line": 7174,
             "description": "process a item drop event on top the canvas",
             "itemtype": "method",
             "name": "processDrop",
@@ -2352,7 +2352,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7288,
+            "line": 7296,
             "description": "selects a given node (or adds it to the current selection)",
             "itemtype": "method",
             "name": "selectNode",
@@ -2360,7 +2360,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7303,
+            "line": 7311,
             "description": "selects several nodes (or adds them to the current selection)",
             "itemtype": "method",
             "name": "selectNodes",
@@ -2368,7 +2368,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7350,
+            "line": 7359,
             "description": "removes a node from the current selection",
             "itemtype": "method",
             "name": "deselectNode",
@@ -2376,7 +2376,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7385,
+            "line": 7394,
             "description": "removes all nodes from the current selection",
             "itemtype": "method",
             "name": "deselectAllNodes",
@@ -2384,7 +2384,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7415,
+            "line": 7424,
             "description": "deletes all nodes in the current selection from the graph",
             "itemtype": "method",
             "name": "deleteSelectedNodes",
@@ -2392,7 +2392,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7451,
+            "line": 7460,
             "description": "centers the camera on a given node",
             "itemtype": "method",
             "name": "centerOnNode",
@@ -2400,7 +2400,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7467,
+            "line": 7476,
             "description": "adds some useful properties to a mouse event, like the position in graph coordinates",
             "itemtype": "method",
             "name": "adjustMouseEvent",
@@ -2408,7 +2408,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7496,
+            "line": 7505,
             "description": "changes the zoom level of the graph (default is 1), you can pass also a place used to pivot the zoom",
             "itemtype": "method",
             "name": "setZoom",
@@ -2416,7 +2416,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7526,
+            "line": 7535,
             "description": "converts a coordinate from graph coordinates to canvas2D coordinates",
             "itemtype": "method",
             "name": "convertOffsetToCanvas",
@@ -2424,7 +2424,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7534,
+            "line": 7543,
             "description": "converts a coordinate from Canvas2D coordinates to graph space",
             "itemtype": "method",
             "name": "convertCanvasToOffset",
@@ -2432,7 +2432,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7551,
+            "line": 7560,
             "description": "brings a node to front (above all other nodes)",
             "itemtype": "method",
             "name": "bringToFront",
@@ -2440,7 +2440,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7565,
+            "line": 7574,
             "description": "sends a node to the back (below all other nodes)",
             "itemtype": "method",
             "name": "sendToBack",
@@ -2448,7 +2448,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7584,
+            "line": 7593,
             "description": "checks which nodes are visible (inside the camera area)",
             "itemtype": "method",
             "name": "computeVisibleNodes",
@@ -2456,7 +2456,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7609,
+            "line": 7618,
             "description": "renders the whole canvas content, by rendering in two separated canvas, one containing the background grid and the connections, and one containing the nodes)",
             "itemtype": "method",
             "name": "draw",
@@ -2464,7 +2464,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7646,
+            "line": 7655,
             "description": "draws the front canvas (the one containing all the nodes)",
             "itemtype": "method",
             "name": "drawFrontCanvas",
@@ -2472,7 +2472,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7913,
+            "line": 7922,
             "description": "draws the panel in the corner that shows subgraph properties",
             "itemtype": "method",
             "name": "drawSubgraphPanel",
@@ -2480,7 +2480,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 8116,
+            "line": 8125,
             "description": "draws some useful stats in the corner of the canvas",
             "itemtype": "method",
             "name": "renderInfo",
@@ -2488,7 +2488,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 8142,
+            "line": 8151,
             "description": "draws the back canvas (the one containing the background and the connections)",
             "itemtype": "method",
             "name": "drawBackCanvas",
@@ -2496,7 +2496,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 8319,
+            "line": 8328,
             "description": "draws the given node inside the canvas",
             "itemtype": "method",
             "name": "drawNode",
@@ -2504,7 +2504,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 8808,
+            "line": 8817,
             "description": "draws the shape of the given node in the canvas",
             "itemtype": "method",
             "name": "drawNodeShape",
@@ -2512,7 +2512,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9139,
+            "line": 9148,
             "description": "draws every connection visible in the canvas\nOPTIMIZE THIS: pre-catch connections position instead of recomputing them every time",
             "itemtype": "method",
             "name": "drawConnections",
@@ -2520,7 +2520,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9265,
+            "line": 9274,
             "description": "draws a link between two points",
             "itemtype": "method",
             "name": "renderLink",
@@ -2575,7 +2575,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9643,
+            "line": 9652,
             "description": "draws the widgets stored inside a node",
             "itemtype": "method",
             "name": "drawNodeWidgets",
@@ -2583,7 +2583,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9860,
+            "line": 9869,
             "description": "process an event on widgets",
             "itemtype": "method",
             "name": "processNodeWidgets",
@@ -2591,7 +2591,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10054,
+            "line": 10064,
             "description": "draws every group area in the background",
             "itemtype": "method",
             "name": "drawGroups",
@@ -2599,7 +2599,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10110,
+            "line": 10120,
             "description": "resizes the canvas to a given size, if no size is passed, then it tries to fill the parentNode",
             "itemtype": "method",
             "name": "resize",
@@ -2607,7 +2607,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10132,
+            "line": 10142,
             "description": "switches to live mode (node shapes are not rendered, only the content)\nthis feature was designed when graphs where meant to create user interfaces",
             "itemtype": "method",
             "name": "switchLiveMode",
@@ -2621,11 +2621,11 @@
         },
         {
             "message": "Missing item type\nfindSlotByType for INPUTS",
-            "line": " ../src/litegraph.js:3941"
+            "line": " ../src/litegraph.js:3950"
         },
         {
             "message": "Missing item type\nfindSlotByType for OUTPUTS",
-            "line": " ../src/litegraph.js:3948"
+            "line": " ../src/litegraph.js:3957"
         }
     ]
 }

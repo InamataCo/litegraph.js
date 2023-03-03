@@ -3192,6 +3192,15 @@
             return;
         }
 
+		if(slot == null)
+		{
+			console.error("slot must be a number");
+			return;
+		}
+
+		if(slot.constructor !== Number)
+			console.warn("slot must be a number, use node.trigger('name') if you want to use a string");
+
         var output = this.outputs[slot];
         if (!output) {
             return;
@@ -5202,6 +5211,7 @@ LGraphNode.prototype.executeAction = function(action)
         this.allow_dragcanvas = true;
         this.allow_dragnodes = true;
         this.allow_interaction = true; //allow to control widgets, buttons, collapse, etc
+        this.multi_select = false; //allow selecting multi nodes without pressing extra keys
         this.allow_searchbox = true;
         this.allow_reconnect_links = true; //allows to change a connection with having to redo it again
 		this.align_to_grid = false; //snap to grid
@@ -6052,9 +6062,7 @@ LGraphNode.prototype.executeAction = function(action)
 							this.graph.beforeChange();
                             this.node_dragged = node;
                         }
-                        if (!this.selected_nodes[node.id]) {
-                            this.processNodeSelected(node, e);
-                        }
+                        this.processNodeSelected(node, e);
                     }
 
                     this.dirty_canvas = true;
@@ -7279,7 +7287,7 @@ LGraphNode.prototype.executeAction = function(action)
     };
 
     LGraphCanvas.prototype.processNodeSelected = function(node, e) {
-        this.selectNode(node, e && (e.shiftKey||e.ctrlKey));
+        this.selectNode(node, e && (e.shiftKey || e.ctrlKey || this.multi_select));
         if (this.onNodeSelected) {
             this.onNodeSelected(node);
         }
@@ -7315,6 +7323,7 @@ LGraphNode.prototype.executeAction = function(action)
         for (var i in nodes) {
             var node = nodes[i];
             if (node.is_selected) {
+                this.deselectNode(node);
                 continue;
             }
 
@@ -9919,7 +9928,8 @@ LGraphNode.prototype.executeAction = function(action)
 				case "combo":
 					var old_value = w.value;
 					if (event.type == LiteGraph.pointerevents_method+"move" && w.type == "number") {
-						w.value += event.deltaX * 0.1 * (w.options.step || 1);
+                        if(event.deltaX)
+						    w.value += event.deltaX * 0.1 * (w.options.step || 1);
 						if ( w.options.min != null && w.value < w.options.min ) {
 							w.value = w.options.min;
 						}
@@ -11985,7 +11995,8 @@ LGraphNode.prototype.executeAction = function(action)
 		    if (root.onClose && typeof root.onClose == "function"){
 		        root.onClose();
 		    }
-		    root.parentNode.removeChild(root);
+            if(root.parentNode)
+		        root.parentNode.removeChild(root);
 		    /* XXX CHECK THIS */
 		    if(this.parentNode){
 		    	this.parentNode.removeChild(this);
