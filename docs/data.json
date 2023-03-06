@@ -2210,7 +2210,7 @@
         {
             "file": "../src/litegraph.js",
             "line": 5439,
-            "description": "returns the visualy active graph (in case there are more in the stack)",
+            "description": "returns the visually active graph (in case there are more in the stack)",
             "itemtype": "method",
             "name": "getCurrentGraph",
             "return": {
