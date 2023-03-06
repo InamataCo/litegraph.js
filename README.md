@@ -187,6 +187,7 @@ Hello there!
 
 ## Contributors
 
+- atlasan
 - kriffe
 - rappestad
 - InventivetalentDev
