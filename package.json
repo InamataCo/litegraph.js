@@ -51,6 +51,7 @@
             "access": "public"
         },
         "hooks": {
+            "before:init": ["npm test"],
             "after:bump": "npm run prebuild && ./utils/build.sh && ./utils/generate_doc.sh"
         },
         "git": {
