@@ -253,60 +253,48 @@
             }
 
             //extend class
-            if (base_class.prototype) {
-                //is a class
-                for (var i in LGraphNode.prototype) {
-                    if (!base_class.prototype[i]) {
-                        base_class.prototype[i] = LGraphNode.prototype[i];
-                    }
+            for (var i in LGraphNode.prototype) {
+                if (!base_class.prototype[i]) {
+                    base_class.prototype[i] = LGraphNode.prototype[i];
                 }
             }
 
             const prev = this.registered_node_types[type];
             if(prev) {
                 console.log(&quot;replacing node type: &quot; + type);
-            } else {
-                if( !Object.prototype.hasOwnProperty.call( base_class.prototype, &quot;shape&quot;) ) {
-                    Object.defineProperty(base_class.prototype, &quot;shape&quot;, {
-                        set: function(v) {
-                            switch (v) {
-                                case &quot;default&quot;:
-                                    delete this._shape;
-                                    break;
-                                case &quot;box&quot;:
-                                    this._shape = LiteGraph.BOX_SHAPE;
-                                    break;
-                                case &quot;round&quot;:
-                                    this._shape = LiteGraph.ROUND_SHAPE;
-                                    break;
-                                case &quot;circle&quot;:
-                                    this._shape = LiteGraph.CIRCLE_SHAPE;
-                                    break;
-                                case &quot;card&quot;:
-                                    this._shape = LiteGraph.CARD_SHAPE;
-                                    break;
-                                default:
-                                    this._shape = v;
-                            }
-                        },
-                        get: function() {
-                            return this._shape;
-                        },
-                        enumerable: true,
-                        configurable: true
-                    });
-                }
+            }
+            if( !Object.prototype.hasOwnProperty.call( base_class.prototype, &quot;shape&quot;) ) {
+                Object.defineProperty(base_class.prototype, &quot;shape&quot;, {
+                    set: function(v) {
+                        switch (v) {
+                            case &quot;default&quot;:
+                                delete this._shape;
+                                break;
+                            case &quot;box&quot;:
+                                this._shape = LiteGraph.BOX_SHAPE;
+                                break;
+                            case &quot;round&quot;:
+                                this._shape = LiteGraph.ROUND_SHAPE;
+                                break;
+                            case &quot;circle&quot;:
+                                this._shape = LiteGraph.CIRCLE_SHAPE;
+                                break;
+                            case &quot;card&quot;:
+                                this._shape = LiteGraph.CARD_SHAPE;
+                                break;
+                            default:
+                                this._shape = v;
+                        }
+                    },
+                    get: function() {
+                        return this._shape;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                
 
-                //warnings
-                if (base_class.prototype.onPropertyChange) {
-                    console.warn(
-                        &quot;LiteGraph node class &quot; +
-                            type +
-                            &quot; has onPropertyChange method, it must be called onPropertyChanged with d at the end&quot;
-                    );
-                }
-
-                //used to know which nodes create when dragging files to the canvas
+                //used to know which nodes to create when dragging files to the canvas
                 if (base_class.supported_extensions) {
                     for (let i in base_class.supported_extensions) {
                         const ext = base_class.supported_extensions[i];
@@ -336,18 +324,8 @@
                         &quot; has onPropertyChange method, it must be called onPropertyChanged with d at the end&quot;
                 );
             }
-
-            //used to know which nodes create when dragging files to the canvas
-            if (base_class.supported_extensions) {
-                for (let i=0; i &lt; base_class.supported_extensions.length; i++) {
-                    var ext = base_class.supported_extensions[i];
-                    if(ext &amp;&amp; ext.constructor === String) {
-                        this.node_types_by_file_extension[ ext.toLowerCase() ] = base_class;
-                    }
-                }
-            }
             
-            // TODO one would want to know input and ouput :: this would allow trought registerNodeAndSlotType to get all the slots types
+            // TODO one would want to know input and ouput :: this would allow through registerNodeAndSlotType to get all the slots types
             if (this.auto_load_slot_types) {
                 new base_class(base_class.title || &quot;tmpnode&quot;);
             }
