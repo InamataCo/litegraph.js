@@ -9734,13 +9734,17 @@ LGraphNode.prototype.executeAction = function(action)
                     ctx.fillRect(margin, y, widget_width - margin * 2, H);
                     var range = w.options.max - w.options.min;
                     var nvalue = (w.value - w.options.min) / range;
-                    ctx.fillStyle = active_widget == w ? "#89A" : "#678";
+					if(nvalue < 0.0) nvalue = 0.0;
+					if(nvalue > 1.0) nvalue = 1.0;
+                    ctx.fillStyle = w.options.hasOwnProperty("slider_color") ? w.options.slider_color : (active_widget == w ? "#89A" : "#678");
                     ctx.fillRect(margin, y, nvalue * (widget_width - margin * 2), H);
 					if(show_text && !w.disabled)
 	                    ctx.strokeRect(margin, y, widget_width - margin * 2, H);
                     if (w.marker) {
                         var marker_nvalue = (w.marker - w.options.min) / range;
-                        ctx.fillStyle = "#AA9";
+						if(marker_nvalue < 0.0) marker_nvalue = 0.0;
+						if(marker_nvalue > 1.0) marker_nvalue = 1.0;
+                        ctx.fillStyle = w.options.hasOwnProperty("marker_color") ? w.options.marker_color : "#AA9";
                         ctx.fillRect( margin + marker_nvalue * (widget_width - margin * 2), y, 2, H );
                     }
                     if (show_text) {
@@ -9907,6 +9911,7 @@ LGraphNode.prototype.executeAction = function(action)
 				case "slider":
 					var old_value = w.value;
 					var nvalue = Math.clamp((x - 15) / (widget_width - 30), 0, 1);
+					if(w.options.read_only) break;
 					w.value = w.options.min + (w.options.max - w.options.min) * nvalue;
 					if (old_value != w.value) {
 						setTimeout(function() {
@@ -9987,6 +9992,12 @@ LGraphNode.prototype.executeAction = function(action)
 						var delta = x < 40 ? -1 : x > widget_width - 40 ? 1 : 0;
 						if (event.click_time < 200 && delta == 0) {
 							this.prompt("Value",w.value,function(v) {
+									// check if v is a valid equation or a number
+									  if (/^[0-9+\-*/()\s]+$/.test(v)) {
+										try {//solve the equation if possible
+									    		v = eval(v);
+										} catch (e) { }
+									}	
 									this.value = Number(v);
 									inner_value_change(this, this.value);
 								}.bind(w),
@@ -10015,7 +10026,6 @@ LGraphNode.prototype.executeAction = function(action)
 				case "text":
 					if (event.type == LiteGraph.pointerevents_method+"down") {
 						this.prompt("Value",w.value,function(v) {
-								this.value = v;
 								inner_value_change(this, v);
 							}.bind(w),
 							event,w.options ? w.options.multiline : false );
@@ -10040,6 +10050,9 @@ LGraphNode.prototype.executeAction = function(action)
         }//end for
 
         function inner_value_change(widget, value) {
+            if(widget.type == "number"){
+                value = Number(value);
+            }
             widget.value = value;
             if ( widget.options && widget.options.property && node.properties[widget.options.property] !== undefined ) {
                 node.setProperty( widget.options.property, value );

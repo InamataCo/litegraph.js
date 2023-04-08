@@ -109,7 +109,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "../src/litegraph.js",
-            "line": 13357,
+            "line": 13370,
             "description": "ContextMenu from LiteGUI",
             "is_constructor": 1,
             "params": [
@@ -2589,7 +2589,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9858,
+            "line": 9862,
             "description": "process an event on widgets",
             "itemtype": "method",
             "name": "processNodeWidgets",
@@ -2597,7 +2597,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10053,
+            "line": 10066,
             "description": "draws every group area in the background",
             "itemtype": "method",
             "name": "drawGroups",
@@ -2605,7 +2605,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10109,
+            "line": 10122,
             "description": "resizes the canvas to a given size, if no size is passed, then it tries to fill the parentNode",
             "itemtype": "method",
             "name": "resize",
@@ -2613,7 +2613,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10131,
+            "line": 10144,
             "description": "switches to live mode (node shapes are not rendered, only the content)\nthis feature was designed when graphs where meant to create user interfaces",
             "itemtype": "method",
             "name": "switchLiveMode",
