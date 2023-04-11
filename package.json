@@ -45,6 +45,7 @@
         "grunt-closure-tools": "^1.0.0",
         "grunt-contrib-concat": "^1.0.1",
         "jest": "^28.1.3",
+        "jest-cli": "^28.1.3",
         "nodemon": "^1.19.4",
         "release-it": "^15.6.0",
         "rimraf": "^2.7.1"
@@ -55,7 +56,7 @@
         },
         "hooks": {
             "before:init": [
-                "npm test"
+                "npm run test:allVersions"
             ],
             "after:bump": "npm run prebuild && ./utils/build.sh && ./utils/generate_doc.sh"
         },
