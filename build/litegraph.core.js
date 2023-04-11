@@ -253,13 +253,18 @@
          * @param {String|Object} type name of the node or the node constructor itself
          */
         unregisterNodeType: function(type) {
-			var base_class = type.constructor === String ? this.registered_node_types[type] : type;
-			if(!base_class)
-				throw("node type not found: " + type );
-			delete this.registered_node_types[base_class.type];
-			if(base_class.constructor.name)
-				delete this.Nodes[base_class.constructor.name];
-		},
+            const base_class =
+                type.constructor === String
+                    ? this.registered_node_types[type]
+                    : type;
+            if (!base_class) {
+                throw "node type not found: " + type;
+            }
+            delete this.registered_node_types[base_class.type];
+            if (base_class.constructor.name) {
+                delete this.Nodes[base_class.constructor.name];
+            }
+        },
 
         /**
         * Save a slot type and his node
@@ -267,38 +272,49 @@
         * @param {String|Object} type name of the node or the node constructor itself
         * @param {String} slot_type name of the slot type (variable type), eg. string, number, array, boolean, ..
         */
-        registerNodeAndSlotType: function(type,slot_type,out){
+        registerNodeAndSlotType: function(type, slot_type, out){
             out = out || false;
-            var base_class = type.constructor === String && this.registered_node_types[type] !== "anonymous" ? this.registered_node_types[type] : type;
-            
-            var sCN = base_class.constructor.type;
-            
-            if (typeof slot_type == "string"){
-                var aTypes = slot_type.split(",");
-            }else if (slot_type == this.EVENT || slot_type == this.ACTION){
-                var aTypes = ["_event_"];
-            }else{
-                var aTypes = ["*"];
+            const base_class =
+                type.constructor === String &&
+                this.registered_node_types[type] !== "anonymous"
+                    ? this.registered_node_types[type]
+                    : type;
+
+            const class_type = base_class.constructor.type;
+
+            let allTypes = [];
+            if (typeof slot_type === "string") {
+                allTypes = slot_type.split(",");
+            } else if (slot_type == this.EVENT || slot_type == this.ACTION) {
+                allTypes = ["_event_"];
+            } else {
+                allTypes = ["*"];
             }
 
-            for (var i = 0; i < aTypes.length; ++i) {
-                var sT = aTypes[i]; //.toLowerCase();
-                if (sT === ""){
-                    sT = "*";
+            for (let i = 0; i < allTypes.length; ++i) {
+                let slotType = allTypes[i];
+                if (slotType === "") {
+                    slotType = "*";
                 }
-                var registerTo = out ? "registered_slot_out_types" : "registered_slot_in_types";
-                if (typeof this[registerTo][sT] == "undefined") this[registerTo][sT] = {nodes: []};
-                this[registerTo][sT].nodes.push(sCN);
-                
+                const registerTo = out
+                    ? "registered_slot_out_types"
+                    : "registered_slot_in_types";
+                if (this[registerTo][slotType] === undefined) {
+                    this[registerTo][slotType] = { nodes: [] };
+                }
+                if (!this[registerTo][slotType].nodes.includes(class_type)) {
+                    this[registerTo][slotType].nodes.push(class_type);
+                }
+
                 // check if is a new type
-                if (!out){
-                    if (!this.slot_types_in.includes(sT.toLowerCase())){
-                        this.slot_types_in.push(sT.toLowerCase());
+                if (!out) {
+                    if (!this.slot_types_in.includes(slotType.toLowerCase())) {
+                        this.slot_types_in.push(slotType.toLowerCase());
                         this.slot_types_in.sort();
                     }
-                }else{
-                    if (!this.slot_types_out.includes(sT.toLowerCase())){
-                        this.slot_types_out.push(sT.toLowerCase());
+                } else {
+                    if (!this.slot_types_out.includes(slotType.toLowerCase())) {
+                        this.slot_types_out.push(slotType.toLowerCase());
                         this.slot_types_out.sort();
                     }
                 }
@@ -5184,6 +5200,7 @@ LGraphNode.prototype.executeAction = function(action)
         this.editor_alpha = 1; //used for transition
         this.pause_rendering = false;
         this.clear_background = true;
+        this.clear_background_color = "#222";
 
 		this.read_only = false; //if set to true users cannot modify the graph
         this.render_only_selected = true;
@@ -6994,9 +7011,9 @@ LGraphNode.prototype.executeAction = function(action)
                 }
             }
 
-            if (e.code == "KeyV" && (e.metaKey || e.ctrlKey) && !e.shiftKey) {
+            if (e.code == "KeyV" && (e.metaKey || e.ctrlKey)) {
                 //paste
-                this.pasteFromClipboard();
+                this.pasteFromClipboard(e.shiftKey);
             }
 
             //delete or backspace
@@ -7081,15 +7098,15 @@ LGraphNode.prototype.executeAction = function(action)
                     var target_node = this.graph.getNodeById(
                         link_info.origin_id
                     );
-                    if (!target_node || !this.selected_nodes[target_node.id]) {
-                        //improve this by allowing connections to non-selected nodes
+                    if (!target_node) {
                         continue;
-                    } //not selected
+                    }
                     clipboard_info.links.push([
                         target_node._relative_id,
                         link_info.origin_slot, //j,
                         node._relative_id,
-                        link_info.target_slot
+                        link_info.target_slot,
+                        target_node.id
                     ]);
                 }
             }
@@ -7100,7 +7117,7 @@ LGraphNode.prototype.executeAction = function(action)
         );
     };
 
-    LGraphCanvas.prototype.pasteFromClipboard = function() {
+    LGraphCanvas.prototype.pasteFromClipboard = function(isConnectUnselected = false) {
         var data = localStorage.getItem("litegrapheditor_clipboard");
         if (!data) {
             return;
@@ -7149,7 +7166,16 @@ LGraphNode.prototype.executeAction = function(action)
         //create links
         for (var i = 0; i < clipboard_info.links.length; ++i) {
             var link_info = clipboard_info.links[i];
-            var origin_node = nodes[link_info[0]];
+            var origin_node;
+            var origin_node_relative_id = link_info[0];
+            if (origin_node_relative_id != null) {
+                origin_node = nodes[origin_node_relative_id];
+            } else if (isConnectUnselected) {
+                var origin_node_id = link_info[4];
+                if (origin_node_id) {
+                    origin_node = this.graph.getNodeById(origin_node_id);
+                }
+            }
             var target_node = nodes[link_info[2]];
 			if( origin_node && target_node )
 	            origin_node.connect(link_info[1], target_node, link_info[3]);
@@ -8212,6 +8238,17 @@ LGraphNode.prototype.executeAction = function(action)
             this.ds.toCanvasContext(ctx);
 
             //render BG
+            if ( this.ds.scale < 1.5 && !bg_already_painted && this.clear_background_color )
+            {
+                ctx.fillStyle = this.clear_background_color;
+                ctx.fillRect(
+                    this.visible_area[0],
+                    this.visible_area[1],
+                    this.visible_area[2],
+                    this.visible_area[3]
+                );
+            }
+
             if (
                 this.background_image &&
                 this.ds.scale > 0.5 &&
