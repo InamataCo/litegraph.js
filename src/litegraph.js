@@ -5214,7 +5214,7 @@ LGraphNode.prototype.executeAction = function(action)
         this.allow_reconnect_links = true; //allows to change a connection with having to redo it again
 		this.align_to_grid = false; //snap to grid
 
-        this.drag_mode = false; // allow dragging when interactions are disabled
+        this.drag_mode = false;
         this.dragging_rectangle = null;
 
         this.filter = null; //allows to filter to only accept some type of nodes in a graph
@@ -5865,7 +5865,7 @@ LGraphNode.prototype.executeAction = function(action)
 
             //when clicked on top of a node
             //and it is not interactive
-            if (node && (this.allow_interaction || (!this.allow_interaction && node.flags.allow_interaction)) && !skip_action && !this.read_only) {
+            if (node && (this.allow_interaction || node.flags.allow_interaction) && !skip_action && !this.read_only) {
                 if (!this.live_mode && !node.flags.pinned) {
                     this.bringToFront(node);
                 } //if it wasn't selected?
@@ -6299,6 +6299,9 @@ LGraphNode.prototype.executeAction = function(action)
             this.dirty_canvas = true;
         }
 
+        //get node over
+        var node = this.graph.getNodeOnPos(e.canvasX,e.canvasY,this.visible_nodes);
+
         if (this.dragging_rectangle)
 		{
             this.dragging_rectangle[2] = e.canvasX - this.dragging_rectangle[0];
@@ -6328,13 +6331,10 @@ LGraphNode.prototype.executeAction = function(action)
             this.ds.offset[1] += delta[1] / this.ds.scale;
             this.dirty_canvas = true;
             this.dirty_bgcanvas = true;
-        } else if ((this.allow_interaction || (!this.allow_interaction && this.drag_mode)) && !this.read_only) {
+        } else if ((this.allow_interaction || (node && node.flags.allow_interaction)) && !this.read_only) {
             if (this.connecting_node) {
                 this.dirty_canvas = true;
             }
-
-            //get node over
-            var node = this.graph.getNodeOnPos(e.canvasX,e.canvasY,this.visible_nodes);
 
             //remove mouseover flag
             for (var i = 0, l = this.graph._nodes.length; i < l; ++i) {
@@ -10294,6 +10294,119 @@ LGraphNode.prototype.executeAction = function(action)
         canvas.graph.add(group);
     };
 
+    /**
+     * Determines the furthest nodes in each direction
+     * @param nodes {LGraphNode[]} the nodes to from which boundary nodes will be extracted
+     * @return {{left: LGraphNode, top: LGraphNode, right: LGraphNode, bottom: LGraphNode}}
+     */
+    LGraphCanvas.getBoundaryNodes = function(nodes) {
+        let top = null;
+        let right = null;
+        let bottom = null;
+        let left = null;
+        for (const nID in nodes) {
+            const node = nodes[nID];
+            const [x, y] = node.pos;
+            const [width, height] = node.size;
+
+            if (top === null || y < top.pos[1]) {
+                top = node;
+            }
+            if (right === null || x + width > right.pos[0] + right.size[0]) {
+                right = node;
+            }
+            if (bottom === null || y + height > bottom.pos[1] + bottom.size[1]) {
+                bottom = node;
+            }
+            if (left === null || x < left.pos[0]) {
+                left = node;
+            }
+        }
+
+        return {
+            "top": top,
+            "right": right,
+            "bottom": bottom,
+            "left": left
+        };
+    }
+    /**
+     * Determines the furthest nodes in each direction for the currently selected nodes
+     * @return {{left: LGraphNode, top: LGraphNode, right: LGraphNode, bottom: LGraphNode}}
+     */
+    LGraphCanvas.prototype.boundaryNodesForSelection = function() {
+        return LGraphCanvas.getBoundaryNodes(Object.values(this.selected_nodes));
+    }
+
+    /**
+     *
+     * @param {LGraphNode[]} nodes a list of nodes
+     * @param {"top"|"bottom"|"left"|"right"} direction Direction to align the nodes
+     * @param {LGraphNode?} align_to Node to align to (if null, align to the furthest node in the given direction)
+     */
+    LGraphCanvas.alignNodes = function (nodes, direction, align_to) {
+        if (!nodes) {
+            return;
+        }
+
+        const canvas = LGraphCanvas.active_canvas;
+        let boundaryNodes = []
+        if (align_to === undefined) {
+            boundaryNodes = LGraphCanvas.getBoundaryNodes(nodes)
+        } else {
+            boundaryNodes = {
+                "top": align_to,
+                "right": align_to,
+                "bottom": align_to,
+                "left": align_to
+            }
+        }
+
+        for (const [_, node] of Object.entries(canvas.selected_nodes)) {
+            switch (direction) {
+                case "right":
+                    node.pos[0] = boundaryNodes["right"].pos[0] + boundaryNodes["right"].size[0] - node.size[0];
+                    break;
+                case "left":
+                    node.pos[0] = boundaryNodes["left"].pos[0];
+                    break;
+                case "top":
+                    node.pos[1] = boundaryNodes["top"].pos[1];
+                    break;
+                case "bottom":
+                    node.pos[1] = boundaryNodes["bottom"].pos[1] + boundaryNodes["bottom"].size[1] - node.size[1];
+                    break;
+            }
+        }
+
+        canvas.dirty_canvas = true;
+        canvas.dirty_bgcanvas = true;
+    };
+
+    LGraphCanvas.onNodeAlign = function(value, options, event, prev_menu, node) {
+        new LiteGraph.ContextMenu(["Top", "Bottom", "Left", "Right"], {
+            event: event,
+            callback: inner_clicked,
+            parentMenu: prev_menu,
+        });
+
+        function inner_clicked(value) {
+            LGraphCanvas.alignNodes(LGraphCanvas.active_canvas.selected_nodes, value.toLowerCase(), node);
+        }
+    }
+
+    LGraphCanvas.onGroupAlign = function(value, options, event, prev_menu) {
+        new LiteGraph.ContextMenu(["Top", "Bottom", "Left", "Right"], {
+            event: event,
+            callback: inner_clicked,
+            parentMenu: prev_menu,
+        });
+
+        function inner_clicked(value) {
+            LGraphCanvas.alignNodes(LGraphCanvas.active_canvas.selected_nodes, value.toLowerCase());
+        }
+    }
+
     LGraphCanvas.onMenuAdd = function (node, options, e, prev_menu, callback) {
 
         var canvas = LGraphCanvas.active_canvas;
@@ -12894,6 +13007,14 @@ LGraphNode.prototype.executeAction = function(action)
                 options.push({ content: "Options", callback: that.showShowGraphOptionsPanel });
             }*/
 
+            if (Object.keys(this.selected_nodes).length > 1) {
+                options.push({
+                    content: "Align",
+                    has_submenu: true,
+                    callback: LGraphCanvas.onGroupAlign,
+                })
+            }
+
             if (this._graph_stack && this._graph_stack.length > 0) {
                 options.push(null, {
                     content: "Close subgraph",
@@ -13007,6 +13128,14 @@ LGraphNode.prototype.executeAction = function(action)
 			content: "To Subgraph",
 			callback: LGraphCanvas.onMenuNodeToSubgraph
 		});
+
+        if (Object.keys(this.selected_nodes).length > 1) {
+            options.push({
+                content: "Align Selected To",
+                has_submenu: true,
+                callback: LGraphCanvas.onNodeAlign,
+            })
+        }
 
 		options.push(null, {
 			content: "Remove",
