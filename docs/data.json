@@ -109,7 +109,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "../src/litegraph.js",
-            "line": 13413,
+            "line": 13542,
             "description": "ContextMenu from LiteGUI",
             "is_constructor": 1,
             "params": [
@@ -2618,6 +2618,55 @@
             "itemtype": "method",
             "name": "switchLiveMode",
             "class": "LGraphCanvas"
+        },
+        {
+            "file": "../src/litegraph.js",
+            "line": 10297,
+            "description": "Determines the furthest nodes in each direction",
+            "params": [
+                {
+                    "name": "nodes",
+                    "description": "the nodes to from which boundary nodes will be extracted",
+                    "type": "LGraphNode[]"
+                }
+            ],
+            "return": {
+                "description": "}",
+                "type": "Left: LGraphNode, top: LGraphNode, right: LGraphNode, bottom: LGraphNode"
+            },
+            "class": "LGraphCanvas"
+        },
+        {
+            "file": "../src/litegraph.js",
+            "line": 10333,
+            "description": "Determines the furthest nodes in each direction for the currently selected nodes",
+            "return": {
+                "description": "}",
+                "type": "Left: LGraphNode, top: LGraphNode, right: LGraphNode, bottom: LGraphNode"
+            },
+            "class": "LGraphCanvas"
+        },
+        {
+            "file": "../src/litegraph.js",
+            "line": 10341,
+            "params": [
+                {
+                    "name": "nodes",
+                    "description": "a list of nodes",
+                    "type": "LGraphNode[]"
+                },
+                {
+                    "name": "direction",
+                    "description": "Direction to align the nodes",
+                    "type": "\"top\"|\"bottom\"|\"left\"|\"right\""
+                },
+                {
+                    "name": "align_to",
+                    "description": "Node to align to (if null, align to the furthest node in the given direction)",
+                    "type": "LGraphNode?"
+                }
+            ],
+            "class": "LGraphCanvas"
         }
     ],
     "warnings": [
@@ -2636,6 +2685,18 @@
         {
             "message": "Missing item type\nDon't call the function if the block is already selected.\nOtherwise, it could cause the block to be unselected while its panel is open.",
             "line": " ../src/litegraph.js:6065"
+        },
+        {
+            "message": "Missing item type\nDetermines the furthest nodes in each direction",
+            "line": " ../src/litegraph.js:10297"
+        },
+        {
+            "message": "Missing item type\nDetermines the furthest nodes in each direction for the currently selected nodes",
+            "line": " ../src/litegraph.js:10333"
+        },
+        {
+            "message": "Missing item type",
+            "line": " ../src/litegraph.js:10341"
         }
     ]
 }
