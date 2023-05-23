@@ -109,7 +109,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "../src/litegraph.js",
-            "line": 13544,
+            "line": 13548,
             "description": "ContextMenu from LiteGUI",
             "is_constructor": 1,
             "params": [
@@ -2486,7 +2486,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 8146,
+            "line": 8150,
             "description": "draws some useful stats in the corner of the canvas",
             "itemtype": "method",
             "name": "renderInfo",
@@ -2494,7 +2494,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 8172,
+            "line": 8176,
             "description": "draws the back canvas (the one containing the background and the connections)",
             "itemtype": "method",
             "name": "drawBackCanvas",
@@ -2502,7 +2502,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 8360,
+            "line": 8364,
             "description": "draws the given node inside the canvas",
             "itemtype": "method",
             "name": "drawNode",
@@ -2510,7 +2510,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 8849,
+            "line": 8853,
             "description": "draws the shape of the given node in the canvas",
             "itemtype": "method",
             "name": "drawNodeShape",
@@ -2518,7 +2518,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9180,
+            "line": 9184,
             "description": "draws every connection visible in the canvas\nOPTIMIZE THIS: pre-catch connections position instead of recomputing them every time",
             "itemtype": "method",
             "name": "drawConnections",
@@ -2526,7 +2526,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9306,
+            "line": 9310,
             "description": "draws a link between two points",
             "itemtype": "method",
             "name": "renderLink",
@@ -2581,7 +2581,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9684,
+            "line": 9688,
             "description": "draws the widgets stored inside a node",
             "itemtype": "method",
             "name": "drawNodeWidgets",
@@ -2589,7 +2589,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9907,
+            "line": 9911,
             "description": "process an event on widgets",
             "itemtype": "method",
             "name": "processNodeWidgets",
@@ -2597,7 +2597,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10111,
+            "line": 10115,
             "description": "draws every group area in the background",
             "itemtype": "method",
             "name": "drawGroups",
@@ -2605,7 +2605,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10167,
+            "line": 10171,
             "description": "resizes the canvas to a given size, if no size is passed, then it tries to fill the parentNode",
             "itemtype": "method",
             "name": "resize",
@@ -2613,7 +2613,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10189,
+            "line": 10193,
             "description": "switches to live mode (node shapes are not rendered, only the content)\nthis feature was designed when graphs where meant to create user interfaces",
             "itemtype": "method",
             "name": "switchLiveMode",
@@ -2621,7 +2621,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10299,
+            "line": 10303,
             "description": "Determines the furthest nodes in each direction",
             "params": [
                 {
@@ -2638,7 +2638,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10335,
+            "line": 10339,
             "description": "Determines the furthest nodes in each direction for the currently selected nodes",
             "return": {
                 "description": "}",
@@ -2648,7 +2648,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10343,
+            "line": 10347,
             "params": [
                 {
                     "name": "nodes",
@@ -2688,15 +2688,15 @@
         },
         {
             "message": "Missing item type\nDetermines the furthest nodes in each direction",
-            "line": " ../src/litegraph.js:10299"
+            "line": " ../src/litegraph.js:10303"
         },
         {
             "message": "Missing item type\nDetermines the furthest nodes in each direction for the currently selected nodes",
-            "line": " ../src/litegraph.js:10335"
+            "line": " ../src/litegraph.js:10339"
         },
         {
             "message": "Missing item type",
-            "line": " ../src/litegraph.js:10343"
+            "line": " ../src/litegraph.js:10347"
         }
     ]
 }
