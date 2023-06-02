@@ -109,7 +109,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "../src/litegraph.js",
-            "line": 13548,
+            "line": 13486,
             "description": "ContextMenu from LiteGUI",
             "is_constructor": 1,
             "params": [
@@ -1708,12 +1708,12 @@
                 {
                     "name": "minHeight",
                     "description": "",
-                    "type": "Number"
+                    "type": "Vec2"
                 }
             ],
             "return": {
                 "description": "the total size",
-                "type": "Number"
+                "type": "Vec2"
             },
             "class": "LGraphNode"
         },
@@ -2518,7 +2518,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9184,
+            "line": 9188,
             "description": "draws every connection visible in the canvas\nOPTIMIZE THIS: pre-catch connections position instead of recomputing them every time",
             "itemtype": "method",
             "name": "drawConnections",
@@ -2526,7 +2526,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9310,
+            "line": 9314,
             "description": "draws a link between two points",
             "itemtype": "method",
             "name": "renderLink",
@@ -2581,7 +2581,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9688,
+            "line": 9692,
             "description": "draws the widgets stored inside a node",
             "itemtype": "method",
             "name": "drawNodeWidgets",
@@ -2589,7 +2589,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9911,
+            "line": 9925,
             "description": "process an event on widgets",
             "itemtype": "method",
             "name": "processNodeWidgets",
@@ -2597,7 +2597,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10115,
+            "line": 10129,
             "description": "draws every group area in the background",
             "itemtype": "method",
             "name": "drawGroups",
@@ -2605,7 +2605,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10171,
+            "line": 10185,
             "description": "resizes the canvas to a given size, if no size is passed, then it tries to fill the parentNode",
             "itemtype": "method",
             "name": "resize",
@@ -2613,7 +2613,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10193,
+            "line": 10207,
             "description": "switches to live mode (node shapes are not rendered, only the content)\nthis feature was designed when graphs where meant to create user interfaces",
             "itemtype": "method",
             "name": "switchLiveMode",
@@ -2621,7 +2621,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10303,
+            "line": 10317,
             "description": "Determines the furthest nodes in each direction",
             "params": [
                 {
@@ -2638,7 +2638,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10339,
+            "line": 10353,
             "description": "Determines the furthest nodes in each direction for the currently selected nodes",
             "return": {
                 "description": "}",
@@ -2648,7 +2648,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10347,
+            "line": 10361,
             "params": [
                 {
                     "name": "nodes",
@@ -2688,15 +2688,15 @@
         },
         {
             "message": "Missing item type\nDetermines the furthest nodes in each direction",
-            "line": " ../src/litegraph.js:10303"
+            "line": " ../src/litegraph.js:10317"
         },
         {
             "message": "Missing item type\nDetermines the furthest nodes in each direction for the currently selected nodes",
-            "line": " ../src/litegraph.js:10339"
+            "line": " ../src/litegraph.js:10353"
         },
         {
             "message": "Missing item type",
-            "line": " ../src/litegraph.js:10347"
+            "line": " ../src/litegraph.js:10361"
         }
     ]
 }

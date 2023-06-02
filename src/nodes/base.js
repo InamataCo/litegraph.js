@@ -1248,12 +1248,6 @@
         "number"
     );
 
-    function length(v) {
-        if(v && v.length != null)
-			return Number(v.length);
-		return 0;
-    }
-
     LiteGraph.wrapFunctionAsNode(
         "basic/not",
         function(a){ return !a; },
