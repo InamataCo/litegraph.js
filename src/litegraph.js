@@ -9142,7 +9142,7 @@ LGraphNode.prototype.executeAction = function(action)
 				else
 				{
 					ctx.beginPath();
-					LCTXUtil.roundRect(ctx, x+2, -w+2, w-4, w-4,[4]);
+					LCTXUtil.roundRect(ctx, x+2, -w+2, w-4, w-4, [4]);
 					ctx.fill();
 				}
 				ctx.fillStyle = "#333";
@@ -9794,8 +9794,7 @@ LGraphNode.prototype.executeAction = function(action)
                     ctx.beginPath();
                     if (show_text) {
                         LCTXUtil.roundRect(ctx, margin, y, widget_width - margin * 2, H, [H * 0.5]);
-                    }
-					else {
+                    } else {
                         ctx.rect(margin, y, widget_width - margin * 2, H );
                     }
                     ctx.fill();
@@ -9922,8 +9921,7 @@ LGraphNode.prototype.executeAction = function(action)
                     ctx.beginPath();
                     if (show_text) {
                         LCTXUtil.roundRect(ctx, margin, y, widget_width - margin * 2, H, [H * 0.5]);
-                    }
-					else {
+                    } else {
                         ctx.rect( margin, y, widget_width - margin * 2, H );
                     }
                     ctx.fill();
@@ -14120,10 +14118,10 @@ LGraphNode.prototype.executeAction = function(action)
 				return;
 			}
 			if( !is_edge_point ) //not edges
-				point[0] = LMathUtil.clamp(x,0,1);
+				point[0] = LMathUtil.clamp(x, 0, 1);
 			else
 				point[0] = s == 0 ? 0 : 1;
-			point[1] = 1.0 - LMathUtil.clamp(y,0,1);
+			point[1] = 1.0 - LMathUtil.clamp(y, 0, 1);
 			points.sort(function(a,b){ return a[0] - b[0]; });
 			this.selected = points.indexOf(point);
 			this.must_update = true;
