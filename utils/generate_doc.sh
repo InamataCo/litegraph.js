@@ -4,4 +4,4 @@
 
 cd "$(dirname "$0")" || exit
 rm -rf ../docs/*
-yuidoc ../src -o ../docs
+../node_modules/.bin/yuidoc ../src -o ../docs

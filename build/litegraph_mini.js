@@ -3539,8 +3539,8 @@
     /**
      * computes the minimum size of a node according to its inputs and output slots
      * @method computeSize
-     * @param {number} minHeight
-     * @return {number} the total size
+     * @param {vec2} minHeight
+     * @return {vec2} the total size
      */
     LGraphNode.prototype.computeSize = function(out) {
         if (this.constructor.size) {
@@ -7965,7 +7965,7 @@ LGraphNode.prototype.executeAction = function(action)
         ctx.fillStyle = "#111";
         ctx.globalAlpha = 0.8;
         ctx.beginPath();
-        ctx.roundRect(10, 10, w, (num + 1) * h + 50, [8]);
+        LCTXUtil.roundRect(ctx, 10, 10, w, (num + 1) * h + 50, [8]);
         ctx.fill();
         ctx.globalAlpha = 1;
 
@@ -8034,7 +8034,7 @@ LGraphNode.prototype.executeAction = function(action)
         ctx.fillStyle = "#111";
         ctx.globalAlpha = 0.8;
         ctx.beginPath();
-        ctx.roundRect(canvas_w - w - 10, 10, w, (num + 1) * h + 50, [8]);
+        LCTXUtil.roundRect(ctx, canvas_w - w - 10, 10, w, (num + 1) * h + 50, [8]);
         ctx.fill();
         ctx.globalAlpha = 1;
 
@@ -8116,7 +8116,7 @@ LGraphNode.prototype.executeAction = function(action)
 		if(clicked)
 			ctx.fillStyle = "#AAA";
 		ctx.beginPath();
-		ctx.roundRect(x,y,w,h,[4] );
+		LCTXUtil.roundRect(ctx, x,y,w,h,[4] );
 		ctx.fill();
 
 		if(text != null)
@@ -8440,7 +8440,7 @@ LGraphNode.prototype.executeAction = function(action)
             if (shape == LiteGraph.BOX_SHAPE) {
                 ctx.rect(0, 0, size[0], size[1]);
             } else if (shape == LiteGraph.ROUND_SHAPE) {
-                ctx.roundRect(0, 0, size[0], size[1], [10]);
+                LCTXUtil.roundRect(ctx, 0, 0, size[0], size[1], [10]);
             } else if (shape == LiteGraph.CIRCLE_SHAPE) {
                 ctx.arc(
                     size[0] * 0.5,
@@ -8841,7 +8841,7 @@ LGraphNode.prototype.executeAction = function(action)
 		ctx.shadowBlur = 3;
 		ctx.fillStyle = "#454";
 		ctx.beginPath();
-		ctx.roundRect( pos[0] - w*0.5, pos[1] - 15 - h, w, h, [3]);
+		LCTXUtil.roundRect(ctx, pos[0] - w*0.5, pos[1] - 15 - h, w, h, [3]);
 		ctx.moveTo( pos[0] - 10, pos[1] - 15 );
 		ctx.lineTo( pos[0] + 10, pos[1] - 15 );
 		ctx.lineTo( pos[0], pos[1] - 5 );
@@ -8905,7 +8905,8 @@ LGraphNode.prototype.executeAction = function(action)
                 shape == LiteGraph.ROUND_SHAPE ||
                 shape == LiteGraph.CARD_SHAPE
             ) {
-                ctx.roundRect(
+                LCTXUtil.roundRect(
+                    ctx,
                     area[0],
                     area[1],
                     area[2],
@@ -8970,7 +8971,8 @@ LGraphNode.prototype.executeAction = function(action)
                 if (shape == LiteGraph.BOX_SHAPE || low_quality) {
                     ctx.rect(0, -title_height, size[0] + 1, title_height);
                 } else if (  shape == LiteGraph.ROUND_SHAPE || shape == LiteGraph.CARD_SHAPE ) {
-                    ctx.roundRect(
+                    LCTXUtil.roundRect(
+                        ctx,
                         0,
                         -title_height,
                         size[0] + 1,
@@ -9102,7 +9104,7 @@ LGraphNode.prototype.executeAction = function(action)
 				else
 				{
 					ctx.beginPath();
-					ctx.roundRect(x+2, -w+2, w-4, w-4,[4]);
+					LCTXUtil.roundRect(ctx, x+2, -w+2, w-4, w-4,[4]);
 					ctx.fill();
 				}
 				ctx.fillStyle = "#333";
@@ -9143,7 +9145,8 @@ LGraphNode.prototype.executeAction = function(action)
                 shape == LiteGraph.ROUND_SHAPE ||
                 (shape == LiteGraph.CARD_SHAPE && node.flags.collapsed)
             ) {
-                ctx.roundRect(
+                LCTXUtil.roundRect(
+                    ctx,
                     -6 + area[0],
                     -6 + area[1],
                     12 + area[2],
@@ -9151,7 +9154,8 @@ LGraphNode.prototype.executeAction = function(action)
                     [this.round_radius * 2]
                 );
             } else if (shape == LiteGraph.CARD_SHAPE) {
-                ctx.roundRect(
+                LCTXUtil.roundRect(
+                    ctx,
                     -6 + area[0],
                     -6 + area[1],
                     12 + area[2],
@@ -9736,8 +9740,9 @@ LGraphNode.prototype.executeAction = function(action)
                         this.dirty_canvas = true;
                     }
                     ctx.fillRect(margin, y, widget_width - margin * 2, H);
-					if(show_text && !w.disabled)
-	                    ctx.strokeRect( margin, y, widget_width - margin * 2, H );
+					if(show_text && !w.disabled) {
+                        ctx.strokeRect( margin, y, widget_width - margin * 2, H );
+                    }
                     if (show_text) {
                         ctx.textAlign = "center";
                         ctx.fillStyle = text_color;
@@ -9749,13 +9754,16 @@ LGraphNode.prototype.executeAction = function(action)
                     ctx.strokeStyle = outline_color;
                     ctx.fillStyle = background_color;
                     ctx.beginPath();
-                    if (show_text)
-	                    ctx.roundRect(margin, y, widget_width - margin * 2, H, [H * 0.5]);
-					else
-	                    ctx.rect(margin, y, widget_width - margin * 2, H );
+                    if (show_text) {
+                        LCTXUtil.roundRect(ctx, margin, y, widget_width - margin * 2, H, [H * 0.5]);
+                    }
+					else {
+                        ctx.rect(margin, y, widget_width - margin * 2, H );
+                    }
                     ctx.fill();
-					if(show_text && !w.disabled)
-	                    ctx.stroke();
+					if(show_text && !w.disabled) {
+                        ctx.stroke();
+                    }
                     ctx.fillStyle = w.value ? "#89A" : "#333";
                     ctx.beginPath();
                     ctx.arc( widget_width - margin * 2, y + H * 0.5, H * 0.36, 0, Math.PI * 2 );
@@ -9811,14 +9819,17 @@ LGraphNode.prototype.executeAction = function(action)
                     ctx.strokeStyle = outline_color;
                     ctx.fillStyle = background_color;
                     ctx.beginPath();
-					if(show_text)
-	                    ctx.roundRect(margin, y, widget_width - margin * 2, H, [H * 0.5] );
-					else
-	                    ctx.rect(margin, y, widget_width - margin * 2, H );
+					if(show_text) {
+                        LCTXUtil.roundRect(ctx, margin, y, widget_width - margin * 2, H, [H * 0.5] );
+                    }
+					else {
+                        ctx.rect(margin, y, widget_width - margin * 2, H );
+                    }
                     ctx.fill();
                     if (show_text) {
-						if(!w.disabled)
-		                    ctx.stroke();
+						if(!w.disabled) {
+                            ctx.stroke();
+                        }
                         ctx.fillStyle = text_color;
 						if(!w.disabled)
 						{
@@ -9871,15 +9882,18 @@ LGraphNode.prototype.executeAction = function(action)
                     ctx.strokeStyle = outline_color;
                     ctx.fillStyle = background_color;
                     ctx.beginPath();
-                    if (show_text)
-	                    ctx.roundRect(margin, y, widget_width - margin * 2, H, [H * 0.5]);
-					else
-	                    ctx.rect( margin, y, widget_width - margin * 2, H );
+                    if (show_text) {
+                        LCTXUtil.roundRect(ctx, margin, y, widget_width - margin * 2, H, [H * 0.5]);
+                    }
+					else {
+                        ctx.rect( margin, y, widget_width - margin * 2, H );
+                    }
                     ctx.fill();
-	                if (show_text) {
-						if(!w.disabled)
+                    if (show_text) {
+						if(!w.disabled) {
 							ctx.stroke();
-    					ctx.save();
+                        }
+                        ctx.save();
 						ctx.beginPath();
 						ctx.rect(margin, y, widget_width - margin * 2, H);
 						ctx.clip();
@@ -9959,7 +9973,7 @@ LGraphNode.prototype.executeAction = function(action)
 					break;
 				case "slider":
 					var old_value = w.value;
-					var nvalue = Math.clamp((x - 15) / (widget_width - 30), 0, 1);
+					var nvalue = LMathUtil.clamp((x - 15) / (widget_width - 30), 0, 1);
 					if(w.options.read_only) break;
 					w.value = w.options.min + (w.options.max - w.options.min) * nvalue;
 					if (old_value != w.value) {
@@ -13340,82 +13354,6 @@ LGraphNode.prototype.executeAction = function(action)
     };
 
     //API *************************************************
-    //like rect but rounded corners
-    if (typeof(window) != "undefined" && window.CanvasRenderingContext2D && !window.CanvasRenderingContext2D.prototype.roundRect) {
-        window.CanvasRenderingContext2D.prototype.roundRect = function(
-		x,
-		y,
-		w,
-		h,
-		radius,
-		radius_low
-	) {
-		var top_left_radius = 0;
-		var top_right_radius = 0;
-		var bottom_left_radius = 0;
-		var bottom_right_radius = 0;
-
-		if ( radius === 0 )
-		{
-			this.rect(x,y,w,h);
-			return;
-		}
-
-		if(radius_low === undefined)
-			radius_low = radius;
-
-		//make it compatible with official one
-		if(radius != null && radius.constructor === Array)
-		{
-			if(radius.length == 1)
-				top_left_radius = top_right_radius = bottom_left_radius = bottom_right_radius = radius[0];
-			else if(radius.length == 2)
-			{
-				top_left_radius = bottom_right_radius = radius[0];
-				top_right_radius = bottom_left_radius = radius[1];
-			}
-			else if(radius.length == 4)
-			{
-				top_left_radius = radius[0];
-				top_right_radius = radius[1];
-				bottom_left_radius = radius[2];
-				bottom_right_radius = radius[3];
-			}
-			else
-				return;
-		}
-		else //old using numbers
-		{
-			top_left_radius = radius || 0;
-			top_right_radius = radius || 0;
-			bottom_left_radius = radius_low || 0;
-			bottom_right_radius = radius_low || 0;
-		}
-
-		//top right
-		this.moveTo(x + top_left_radius, y);
-		this.lineTo(x + w - top_right_radius, y);
-		this.quadraticCurveTo(x + w, y, x + w, y + top_right_radius);
-
-		//bottom right
-		this.lineTo(x + w, y + h - bottom_right_radius);
-		this.quadraticCurveTo(
-			x + w,
-			y + h,
-			x + w - bottom_right_radius,
-			y + h
-		);
-
-		//bottom left
-		this.lineTo(x + bottom_right_radius, y + h);
-		this.quadraticCurveTo(x, y + h, x, y + h - bottom_left_radius);
-
-		//top left
-		this.lineTo(x, y + bottom_left_radius);
-		this.quadraticCurveTo(x, y, x + top_left_radius, y);
-	};
-	}//if
-
     function compareObjects(a, b) {
         for (var i in a) {
             if (a[i] != b[i]) {
@@ -14144,10 +14082,10 @@ LGraphNode.prototype.executeAction = function(action)
 				return;
 			}
 			if( !is_edge_point ) //not edges
-				point[0] = Math.clamp(x,0,1);
+				point[0] = LMathUtil.clamp(x,0,1);
 			else
 				point[0] = s == 0 ? 0 : 1;
-			point[1] = 1.0 - Math.clamp(y,0,1);
+			point[1] = 1.0 - LMathUtil.clamp(y,0,1);
 			points.sort(function(a,b){ return a[0] - b[0]; });
 			this.selected = points.indexOf(point);
 			this.must_update = true;
@@ -14295,10 +14233,6 @@ LGraphNode.prototype.executeAction = function(action)
 				return oDOM.removeEventListener(sEvent, fCall, capture);
 		}
 	}
-	
-    Math.clamp = function(v, a, b) {
-        return a > v ? a : b < v ? b : v;
-    };
 
     if (typeof window != "undefined" && !window["requestAnimationFrame"]) {
         window.requestAnimationFrame =
@@ -14308,6 +14242,92 @@ LGraphNode.prototype.executeAction = function(action)
                 window.setTimeout(callback, 1000 / 60);
             };
     }
+
+    var LMathUtil = (global.LMathUtil = {
+        clamp : function(v, a, b) {
+            return a > v ? a : b < v ? b : v;
+        }
+    });
+    LiteGraph.LMathUtil = LMathUtil;
+
+    var LCTXUtil = (global.LCTXUtil = {
+        //like ctx.rect but rounded corners
+        roundRect : function(
+            ctx,
+            x,
+            y,
+            w,
+            h,
+            radius,
+            radius_low
+        ) {
+            var top_left_radius = 0;
+            var top_right_radius = 0;
+            var bottom_left_radius = 0;
+            var bottom_right_radius = 0;
+
+            if ( radius === 0 )
+            {
+                ctx.rect(x,y,w,h);
+                return;
+            }
+
+            if(radius_low === undefined)
+                radius_low = radius;
+
+            //make it compatible with official one
+            if(radius != null && radius.constructor === Array)
+            {
+                if(radius.length == 1)
+                    top_left_radius = top_right_radius = bottom_left_radius = bottom_right_radius = radius[0];
+                else if(radius.length == 2)
+                {
+                    top_left_radius = bottom_right_radius = radius[0];
+                    top_right_radius = bottom_left_radius = radius[1];
+                }
+                else if(radius.length == 4)
+                {
+                    top_left_radius = radius[0];
+                    top_right_radius = radius[1];
+                    bottom_left_radius = radius[2];
+                    bottom_right_radius = radius[3];
+                }
+                else
+                    return;
+            }
+            else //old using numbers
+            {
+                top_left_radius = radius || 0;
+                top_right_radius = radius || 0;
+                bottom_left_radius = radius_low || 0;
+                bottom_right_radius = radius_low || 0;
+            }
+
+            //top right
+            ctx.moveTo(x + top_left_radius, y);
+            ctx.lineTo(x + w - top_right_radius, y);
+            ctx.quadraticCurveTo(x + w, y, x + w, y + top_right_radius);
+
+            //bottom right
+            ctx.lineTo(x + w, y + h - bottom_right_radius);
+            ctx.quadraticCurveTo(
+                x + w,
+                y + h,
+                x + w - bottom_right_radius,
+                y + h
+            );
+
+            //bottom left
+            ctx.lineTo(x + bottom_right_radius, y + h);
+            ctx.quadraticCurveTo(x, y + h, x, y + h - bottom_left_radius);
+
+            //top left
+            ctx.lineTo(x, y + bottom_left_radius);
+            ctx.quadraticCurveTo(x, y, x + top_left_radius, y);
+        }
+    });
+    LiteGraph.LCTXUtil = LCTXUtil;
+
 })(this);
 
 if (typeof exports != "undefined") {
@@ -15564,12 +15584,6 @@ if (typeof exports != "undefined") {
         [""],
         "number"
     );
-
-    function length(v) {
-        if(v && v.length != null)
-			return Number(v.length);
-		return 0;
-    }
 
     LiteGraph.wrapFunctionAsNode(
         "basic/not",
