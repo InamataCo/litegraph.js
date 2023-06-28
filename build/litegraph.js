@@ -144,6 +144,10 @@
 
         ctrl_shift_v_paste_connect_unselected_outputs: false, //[true!] allows ctrl + shift + v to paste nodes with the outputs of the unselected nodes connected with the inputs of the newly pasted nodes
 
+        // if true, all newly created nodes/links will use string UUIDs for their id fields instead of integers.
+        // use this if you must have node IDs that are unique across all graphs and subgraphs.
+        use_uuids: false,
+
         /**
          * Register a node class so it can be listed when the user wants to create a new one
          * @method registerNodeType
@@ -601,6 +605,13 @@
                 target[i] = r[i];
             }
             return target;
+        },
+
+        /*
+         * https://gist.github.com/jed/982883?permalink_comment_id=852670#gistcomment-852670
+         */
+        uuidv4: function() {
+            return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,a=>(a^Math.random()*16>>a/4).toString(16));
         },
 
         /**
@@ -1407,7 +1418,12 @@
             console.warn(
                 "LiteGraph: there is already a node with this ID, changing it"
             );
-            node.id = ++this.last_node_id;
+            if (LiteGraph.use_uuids) {
+                node.id = LiteGraph.uuidv4();
+            }
+            else {
+                node.id = ++this.last_node_id;
+            }
         }
 
         if (this._nodes.length >= LiteGraph.MAX_NUMBER_OF_NODES) {
@@ -1415,10 +1431,16 @@
         }
 
         //give him an id
-        if (node.id == null || node.id == -1) {
-            node.id = ++this.last_node_id;
-        } else if (this.last_node_id < node.id) {
-            this.last_node_id = node.id;
+        if (LiteGraph.use_uuids) {
+            if (node.id == null || node.id == -1)
+                node.id = LiteGraph.uuidv4();
+        }
+        else {
+            if (node.id == null || node.id == -1) {
+                node.id = ++this.last_node_id;
+            } else if (this.last_node_id < node.id) {
+                this.last_node_id = node.id;
+            }
         }
 
         node.graph = this;
@@ -2414,7 +2436,12 @@
             enumerable: true
         });
 
-        this.id = -1; //not know till not added
+        if (LiteGraph.use_uuids) {
+            this.id = LiteGraph.uuidv4();
+        }
+        else {
+            this.id = -1; //not know till not added
+        }
         this.type = null;
 
         //inputs available: array of inputs
@@ -2628,6 +2655,11 @@
         }
 
         delete data["id"];
+
+        if (LiteGraph.use_uuids) {
+            data["id"] = LiteGraph.uuidv4()
+        }
+
         //remove links
         node.configure(data);
 
@@ -4266,10 +4298,16 @@
                 break;
             }
         }
+
+        var nextId
+        if (LiteGraph.use_uuids)
+            nextId = LiteGraph.uuidv4();
+        else
+            nextId = ++this.graph.last_link_id;
         
 		//create link class
 		link_info = new LLink(
-			++this.graph.last_link_id,
+			nextId,
 			input.type || output.type,
 			this.id,
 			slot,
@@ -7073,6 +7111,8 @@ LGraphNode.prototype.executeAction = function(action)
         var selected_nodes_array = [];
         for (var i in this.selected_nodes) {
             var node = this.selected_nodes[i];
+            if (node.clonable === false)
+                continue;
             node._relative_id = index;
             selected_nodes_array.push(node);
             index += 1;
@@ -7080,12 +7120,12 @@ LGraphNode.prototype.executeAction = function(action)
 
         for (var i = 0; i < selected_nodes_array.length; ++i) {
             var node = selected_nodes_array[i];
-			var cloned = node.clone();
-			if(!cloned)
-			{
-				console.warn("node type not found: " + node.type );
-				continue;
-			}
+            var cloned = node.clone();
+            if(!cloned)
+            {
+                console.warn("node type not found: " + node.type );
+                continue;
+            }
             clipboard_info.nodes.push(cloned.serialize());
             if (node.inputs && node.inputs.length) {
                 for (var j = 0; j < node.inputs.length; ++j) {
@@ -12963,7 +13003,7 @@ LGraphNode.prototype.executeAction = function(action)
 		var newSelected = {};
 		
 		var fApplyMultiNode = function(node){
-			if (node.clonable == false) {
+			if (node.clonable === false) {
 				return;
 			}
 			var newnode = node.clone();
@@ -14332,6 +14372,13 @@ LGraphNode.prototype.executeAction = function(action)
 
 if (typeof exports != "undefined") {
     exports.LiteGraph = this.LiteGraph;
+    exports.LGraph = this.LGraph;
+    exports.LLink = this.LLink;
+    exports.LGraphNode = this.LGraphNode;
+    exports.LGraphGroup = this.LGraphGroup;
+    exports.DragAndScale = this.DragAndScale;
+    exports.LGraphCanvas = this.LGraphCanvas;
+    exports.ContextMenu = this.ContextMenu;
 }
 
 
@@ -14632,9 +14679,92 @@ if (typeof exports != "undefined") {
     };
     //no need to define node.configure, the default method detects node.subgraph and passes the object to node.subgraph.configure()
 
+    Subgraph.prototype.reassignSubgraphUUIDs = function(graph) {
+        const idMap = { nodeIDs: {}, linkIDs: {} }
+
+        for (const node of graph.nodes) {
+            const oldID = node.id
+            const newID = LiteGraph.uuidv4()
+            node.id = newID
+
+            if (idMap.nodeIDs[oldID] || idMap.nodeIDs[newID]) {
+                throw new Error(`New/old node UUID wasn't unique in changed map! ${oldID} ${newID}`)
+            }
+
+            idMap.nodeIDs[oldID] = newID
+            idMap.nodeIDs[newID] = oldID
+        }
+
+        for (const link of graph.links) {
+            const oldID = link[0]
+            const newID = LiteGraph.uuidv4();
+            link[0] = newID
+
+            if (idMap.linkIDs[oldID] || idMap.linkIDs[newID]) {
+                throw new Error(`New/old link UUID wasn't unique in changed map! ${oldID} ${newID}`)
+            }
+
+            idMap.linkIDs[oldID] = newID
+            idMap.linkIDs[newID] = oldID
+
+            const nodeFrom = link[1]
+            const nodeTo = link[3]
+
+            if (!idMap.nodeIDs[nodeFrom]) {
+                throw new Error(`Old node UUID not found in mapping! ${nodeFrom}`)
+            }
+
+            link[1] = idMap.nodeIDs[nodeFrom]
+
+            if (!idMap.nodeIDs[nodeTo]) {
+                throw new Error(`Old node UUID not found in mapping! ${nodeTo}`)
+            }
+
+            link[3] = idMap.nodeIDs[nodeTo]
+        }
+
+        // Reconnect links
+        for (const node of graph.nodes) {
+            if (node.inputs) {
+                for (const input of node.inputs) {
+                    if (input.link) {
+                        input.link = idMap.linkIDs[input.link]
+                    }
+                }
+            }
+            if (node.outputs) {
+                for (const output of node.outputs) {
+                    if (output.links) {
+                        output.links = output.links.map(l => idMap.linkIDs[l]);
+                    }
+                }
+            }
+        }
+
+        // Recurse!
+        for (const node of graph.nodes) {
+            if (node.type === "graph/subgraph") {
+                const merge = reassignGraphUUIDs(node.subgraph);
+                idMap.nodeIDs.assign(merge.nodeIDs)
+                idMap.linkIDs.assign(merge.linkIDs)
+            }
+        }
+    };
+
     Subgraph.prototype.clone = function() {
         var node = LiteGraph.createNode(this.type);
         var data = this.serialize();
+
+        if (LiteGraph.use_uuids) {
+            // LGraph.serialize() seems to reuse objects in the original graph. But we
+            // need to change node IDs here, so clone it first.
+            const subgraph = LiteGraph.cloneObject(data.subgraph)
+
+            this.reassignSubgraphUUIDs(subgraph);
+
+            data.subgraph = subgraph;
+        }
+
         delete data["id"];
         delete data["inputs"];
         delete data["outputs"];
@@ -15584,6 +15714,12 @@ if (typeof exports != "undefined") {
         [""],
         "number"
     );
+
+    function length(v) {
+        if(v && v.length != null)
+			return Number(v.length);
+		return 0;
+    }
 
     LiteGraph.wrapFunctionAsNode(
         "basic/not",
