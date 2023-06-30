@@ -1495,16 +1495,3 @@ declare class ContextMenu {
 declare class LMathUtil {
     static clamp(v: number, min: number, max: number): number;
 }
-
-declare class LCTXUtil {
-    /** like rect but rounded corners */
-    static roundRect(
-        x: number,
-        y: number,
-        width: number,
-        height: number,
-        radius: number,
-        radiusLow: number
-    ): void;
-
-}
