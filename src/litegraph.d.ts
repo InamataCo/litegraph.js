@@ -1492,6 +1492,4 @@ declare class ContextMenu {
     getFirstEvent(): void;
 }
 
-declare class LMathUtil {
-    static clamp(v: number, min: number, max: number): number;
-}
+declare function clamp(v: number, min: number, max: number): number;

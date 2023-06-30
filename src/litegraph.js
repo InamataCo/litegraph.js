@@ -9997,7 +9997,7 @@ LGraphNode.prototype.executeAction = function(action)
 					break;
 				case "slider":
 					var old_value = w.value;
-					var nvalue = LMathUtil.clamp((x - 15) / (widget_width - 30), 0, 1);
+					var nvalue = clamp((x - 15) / (widget_width - 30), 0, 1);
 					if(w.options.read_only) break;
 					w.value = w.options.min + (w.options.max - w.options.min) * nvalue;
 					if (old_value != w.value) {
@@ -14106,10 +14106,10 @@ LGraphNode.prototype.executeAction = function(action)
 				return;
 			}
 			if( !is_edge_point ) //not edges
-				point[0] = LMathUtil.clamp(x, 0, 1);
+				point[0] = clamp(x, 0, 1);
 			else
 				point[0] = s == 0 ? 0 : 1;
-			point[1] = 1.0 - LMathUtil.clamp(y, 0, 1);
+			point[1] = 1.0 - clamp(y, 0, 1);
 			points.sort(function(a,b){ return a[0] - b[0]; });
 			this.selected = points.indexOf(point);
 			this.must_update = true;
@@ -14258,12 +14258,10 @@ LGraphNode.prototype.executeAction = function(action)
 		}
 	}
 
-    var LMathUtil = (global.LMathUtil = {
-        clamp : function(v, a, b) {
-            return a > v ? a : b < v ? b : v;
-        }
-    });
-    LiteGraph.LMathUtil = LMathUtil;
+    function clamp(v, a, b) {
+        return a > v ? a : b < v ? b : v;
+    };
+    global.clamp = clamp;
 
     if (typeof window != "undefined" && !window["requestAnimationFrame"]) {
         window.requestAnimationFrame =
