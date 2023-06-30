@@ -9999,7 +9999,7 @@ LGraphNode.prototype.executeAction = function(action)
 					break;
 				case "slider":
 					var old_value = w.value;
-					var nvalue = LMathUtil.clamp((x - 15) / (widget_width - 30), 0, 1);
+					var nvalue = clamp((x - 15) / (widget_width - 30), 0, 1);
 					if(w.options.read_only) break;
 					w.value = w.options.min + (w.options.max - w.options.min) * nvalue;
 					if (old_value != w.value) {
@@ -14108,10 +14108,10 @@ LGraphNode.prototype.executeAction = function(action)
 				return;
 			}
 			if( !is_edge_point ) //not edges
-				point[0] = LMathUtil.clamp(x, 0, 1);
+				point[0] = clamp(x, 0, 1);
 			else
 				point[0] = s == 0 ? 0 : 1;
-			point[1] = 1.0 - LMathUtil.clamp(y, 0, 1);
+			point[1] = 1.0 - clamp(y, 0, 1);
 			points.sort(function(a,b){ return a[0] - b[0]; });
 			this.selected = points.indexOf(point);
 			this.must_update = true;
@@ -14260,12 +14260,10 @@ LGraphNode.prototype.executeAction = function(action)
 		}
 	}
 
-    var LMathUtil = (global.LMathUtil = {
-        clamp : function(v, a, b) {
-            return a > v ? a : b < v ? b : v;
-        }
-    });
-    LiteGraph.LMathUtil = LMathUtil;
+    function clamp(v, a, b) {
+        return a > v ? a : b < v ? b : v;
+    };
+    global.clamp = clamp;
 
     if (typeof window != "undefined" && !window["requestAnimationFrame"]) {
         window.requestAnimationFrame =
@@ -16152,7 +16150,7 @@ if (typeof exports != "undefined") {
 		if(index != null)
 		{
 			index = Math.floor(index);
-			index = LMathUtil.clamp( index, 0, this.outputs ? (this.outputs.length - 2) : 0 );
+			index = clamp( index, 0, this.outputs ? (this.outputs.length - 2) : 0 );
 			if( index != this.properties.index )
 			{
 				this.properties.index = index;
@@ -16768,7 +16766,7 @@ if (typeof exports != "undefined") {
         this._remainder = steps % 1;
         steps = steps | 0;
 
-        var v = LMathUtil.clamp(
+        var v = clamp(
             this.properties.value + steps * this.properties.step,
             this.properties.min,
             this.properties.max
@@ -16781,7 +16779,7 @@ if (typeof exports != "undefined") {
     WidgetNumber.prototype.onMouseUp = function(e, pos) {
         if (e.click_time < 200) {
             var steps = pos[1] > this.size[1] * 0.5 ? -1 : 1;
-            this.properties.value = LMathUtil.clamp(
+            this.properties.value = clamp(
                 this.properties.value + steps * this.properties.step,
                 this.properties.min,
                 this.properties.max
@@ -17846,7 +17844,7 @@ if (typeof exports != "undefined") {
 
         this._last_v = ((v - in_min) / (in_max - in_min)) * (out_max - out_min) + out_min;
         this.setOutputData(0, this._last_v);
-        this.setOutputData(1, LMathUtil.clamp( this._last_v, out_min, out_max ));
+        this.setOutputData(1, clamp( this._last_v, out_min, out_max ));
     };
 
     MathRange.prototype.onDrawBackground = function(ctx) {
@@ -18176,7 +18174,7 @@ if (typeof exports != "undefined") {
         var edge1 = this.properties.B;
 
         // Scale, bias and saturate x to 0..1 range
-        v = LMathUtil.clamp((v - edge0) / (edge1 - edge0), 0.0, 1.0);
+        v = clamp((v - edge0) / (edge1 - edge0), 0.0, 1.0);
         // Evaluate polynomial
         v = v * v * (3 - 2 * v);
 
@@ -19552,7 +19550,7 @@ if (typeof exports != "undefined") {
 			for(var i = 0; i < 3; ++i)
 			{
 				var r = range_max[i] - range_min[i];
-				this._clamped[i] = LMathUtil.clamp( this._value[i], range_min[i], range_max[i] );
+				this._clamped[i] = clamp( this._value[i], range_min[i], range_max[i] );
 				if(r == 0)
 				{
 					this._value[i] = (target_min[i] + target_max[i]) * 0.5;
@@ -19561,7 +19559,7 @@ if (typeof exports != "undefined") {
 
 				var n = (this._value[i] - range_min[i]) / r;
 				if(this.properties.clamp)
-					n = LMathUtil.clamp(n,0,1);
+					n = clamp(n,0,1);
 				var t = target_max[i] - target_min[i];
 				this._value[i] = target_min[i] + n * t;
 			}
@@ -19998,10 +19996,10 @@ if (typeof exports != "undefined") {
                 ctx.strokeStyle = colors[i];
                 ctx.beginPath();
                 var v = values[0] * scale * -1 + offset;
-                ctx.moveTo(0, LMathUtil.clamp(v, 0, size[1]));
+                ctx.moveTo(0, clamp(v, 0, size[1]));
                 for (var j = 1; j < values.length && j < size[0]; ++j) {
                     var v = values[j] * scale * -1 + offset;
-                    ctx.lineTo(j, LMathUtil.clamp(v, 0, size[1]));
+                    ctx.lineTo(j, clamp(v, 0, size[1]));
                 }
                 ctx.stroke();
             }
@@ -22909,7 +22907,7 @@ void main() {\n\
 			LGraphTextureLinearAvgSmooth._shader_avg = new GL.Shader( GL.Shader.SCREEN_VERTEX_SHADER, LGraphTextureLinearAvgSmooth.pixel_shader_avg );
 		}
 
-		var samples = LMathUtil.clamp(this.properties.samples,0,64);
+		var samples = clamp(this.properties.samples,0,64);
 		var frame = this.frame;
 		var interval = this.properties.frames_interval;
 
@@ -23540,11 +23538,11 @@ void main() {\n\
 		var c = this.properties.color;
 		ctx.fillStyle =
 			"rgb(" +
-			Math.floor(LMathUtil.clamp(c[0], 0, 1) * 255) +
+			Math.floor(clamp(c[0], 0, 1) * 255) +
 			"," +
-			Math.floor(LMathUtil.clamp(c[1], 0, 1) * 255) +
+			Math.floor(clamp(c[1], 0, 1) * 255) +
 			"," +
-			Math.floor(LMathUtil.clamp(c[2], 0, 1) * 255) +
+			Math.floor(clamp(c[2], 0, 1) * 255) +
 			")";
 		if (this.flags.collapsed) {
 			this.boxcolor = ctx.fillStyle;
@@ -24372,7 +24370,7 @@ LGraphTextureBlur.pixel_shader = "precision highp float;\n\
 		var currentSource = currentDestination;
 
 		var iterations = this.iterations;
-		iterations = LMathUtil.clamp(iterations, 1, 16) | 0;
+		iterations = clamp(iterations, 1, 16) | 0;
 		var texel_size = uniforms.u_texel_size;
 		var intensity = this.intensity;
 
@@ -25510,14 +25508,14 @@ void main(void){\n\
 		{
 			if(split)
 			{
-				values[i*4] = LMathUtil.clamp( this.sampleCurve(i/num,this._points.R)*255,0,255);
-				values[i*4+1] = LMathUtil.clamp( this.sampleCurve(i/num,this._points.G)*255,0,255);
-				values[i*4+2] = LMathUtil.clamp( this.sampleCurve(i/num,this._points.B)*255,0,255);
+				values[i*4] = clamp( this.sampleCurve(i/num,this._points.R)*255,0,255);
+				values[i*4+1] = clamp( this.sampleCurve(i/num,this._points.G)*255,0,255);
+				values[i*4+2] = clamp( this.sampleCurve(i/num,this._points.B)*255,0,255);
 			}
 			else
 			{
 				var v = this.sampleCurve(i/num);//sample curve
-				values[i*4] = values[i*4+1] = values[i*4+2] = LMathUtil.clamp(v*255,0,255);
+				values[i*4] = values[i*4+1] = values[i*4+2] = clamp(v*255,0,255);
 			}
 			values[i*4+3] = 255; //alpha fixed
 		}
@@ -31751,13 +31749,13 @@ function LGraphGeometryDisplace() {
                     case "value1":
                         var v = this.getInputData(i);
                         if (v != null) {
-                            this.properties.value1 = LMathUtil.clamp(v|0,0,127);
+                            this.properties.value1 = clamp(v|0,0,127);
                         }
                         break;
                     case "value2":
                         var v = this.getInputData(i);
                         if (v != null) {
-                            this.properties.value2 = LMathUtil.clamp(v|0,0,127);
+                            this.properties.value2 = clamp(v|0,0,127);
                         }
                         break;
                 }
