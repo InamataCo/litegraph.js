@@ -8005,7 +8005,7 @@ LGraphNode.prototype.executeAction = function(action)
         ctx.fillStyle = "#111";
         ctx.globalAlpha = 0.8;
         ctx.beginPath();
-        LCTXUtil.roundRect(ctx, 10, 10, w, (num + 1) * h + 50, [8]);
+        ctx.roundRect(10, 10, w, (num + 1) * h + 50, [8]);
         ctx.fill();
         ctx.globalAlpha = 1;
 
@@ -8074,7 +8074,7 @@ LGraphNode.prototype.executeAction = function(action)
         ctx.fillStyle = "#111";
         ctx.globalAlpha = 0.8;
         ctx.beginPath();
-        LCTXUtil.roundRect(ctx, canvas_w - w - 10, 10, w, (num + 1) * h + 50, [8]);
+        ctx.roundRect(canvas_w - w - 10, 10, w, (num + 1) * h + 50, [8]);
         ctx.fill();
         ctx.globalAlpha = 1;
 
@@ -8156,7 +8156,7 @@ LGraphNode.prototype.executeAction = function(action)
 		if(clicked)
 			ctx.fillStyle = "#AAA";
 		ctx.beginPath();
-		LCTXUtil.roundRect(ctx, x,y,w,h,[4] );
+		ctx.roundRect(x,y,w,h,[4] );
 		ctx.fill();
 
 		if(text != null)
@@ -8480,7 +8480,7 @@ LGraphNode.prototype.executeAction = function(action)
             if (shape == LiteGraph.BOX_SHAPE) {
                 ctx.rect(0, 0, size[0], size[1]);
             } else if (shape == LiteGraph.ROUND_SHAPE) {
-                LCTXUtil.roundRect(ctx, 0, 0, size[0], size[1], [10]);
+                ctx.roundRect(0, 0, size[0], size[1], [10]);
             } else if (shape == LiteGraph.CIRCLE_SHAPE) {
                 ctx.arc(
                     size[0] * 0.5,
@@ -8881,7 +8881,7 @@ LGraphNode.prototype.executeAction = function(action)
 		ctx.shadowBlur = 3;
 		ctx.fillStyle = "#454";
 		ctx.beginPath();
-		LCTXUtil.roundRect(ctx, pos[0] - w*0.5, pos[1] - 15 - h, w, h, [3]);
+		ctx.roundRect( pos[0] - w*0.5, pos[1] - 15 - h, w, h, [3]);
 		ctx.moveTo( pos[0] - 10, pos[1] - 15 );
 		ctx.lineTo( pos[0] + 10, pos[1] - 15 );
 		ctx.lineTo( pos[0], pos[1] - 5 );
@@ -8945,8 +8945,7 @@ LGraphNode.prototype.executeAction = function(action)
                 shape == LiteGraph.ROUND_SHAPE ||
                 shape == LiteGraph.CARD_SHAPE
             ) {
-                LCTXUtil.roundRect(
-                    ctx,
+                ctx.roundRect(
                     area[0],
                     area[1],
                     area[2],
@@ -9011,8 +9010,7 @@ LGraphNode.prototype.executeAction = function(action)
                 if (shape == LiteGraph.BOX_SHAPE || low_quality) {
                     ctx.rect(0, -title_height, size[0] + 1, title_height);
                 } else if (  shape == LiteGraph.ROUND_SHAPE || shape == LiteGraph.CARD_SHAPE ) {
-                    LCTXUtil.roundRect(
-                        ctx,
+                    ctx.roundRect(
                         0,
                         -title_height,
                         size[0] + 1,
@@ -9144,7 +9142,7 @@ LGraphNode.prototype.executeAction = function(action)
 				else
 				{
 					ctx.beginPath();
-					LCTXUtil.roundRect(ctx, x+2, -w+2, w-4, w-4,[4]);
+					ctx.roundRect(x+2, -w+2, w-4, w-4,[4]);
 					ctx.fill();
 				}
 				ctx.fillStyle = "#333";
@@ -9185,8 +9183,7 @@ LGraphNode.prototype.executeAction = function(action)
                 shape == LiteGraph.ROUND_SHAPE ||
                 (shape == LiteGraph.CARD_SHAPE && node.flags.collapsed)
             ) {
-                LCTXUtil.roundRect(
-                    ctx,
+                ctx.roundRect(
                     -6 + area[0],
                     -6 + area[1],
                     12 + area[2],
@@ -9194,8 +9191,7 @@ LGraphNode.prototype.executeAction = function(action)
                     [this.round_radius * 2]
                 );
             } else if (shape == LiteGraph.CARD_SHAPE) {
-                LCTXUtil.roundRect(
-                    ctx,
+                ctx.roundRect(
                     -6 + area[0],
                     -6 + area[1],
                     12 + area[2],
@@ -9780,9 +9776,8 @@ LGraphNode.prototype.executeAction = function(action)
                         this.dirty_canvas = true;
                     }
                     ctx.fillRect(margin, y, widget_width - margin * 2, H);
-					if(show_text && !w.disabled) {
-                        ctx.strokeRect( margin, y, widget_width - margin * 2, H );
-                    }
+					if(show_text && !w.disabled)
+	                    ctx.strokeRect( margin, y, widget_width - margin * 2, H );
                     if (show_text) {
                         ctx.textAlign = "center";
                         ctx.fillStyle = text_color;
@@ -9794,16 +9789,13 @@ LGraphNode.prototype.executeAction = function(action)
                     ctx.strokeStyle = outline_color;
                     ctx.fillStyle = background_color;
                     ctx.beginPath();
-                    if (show_text) {
-                        LCTXUtil.roundRect(ctx, margin, y, widget_width - margin * 2, H, [H * 0.5]);
-                    }
-					else {
-                        ctx.rect(margin, y, widget_width - margin * 2, H );
-                    }
+                    if (show_text)
+	                    ctx.roundRect(margin, y, widget_width - margin * 2, H, [H * 0.5]);
+					else
+	                    ctx.rect(margin, y, widget_width - margin * 2, H );
                     ctx.fill();
-					if(show_text && !w.disabled) {
-                        ctx.stroke();
-                    }
+					if(show_text && !w.disabled)
+	                    ctx.stroke();
                     ctx.fillStyle = w.value ? "#89A" : "#333";
                     ctx.beginPath();
                     ctx.arc( widget_width - margin * 2, y + H * 0.5, H * 0.36, 0, Math.PI * 2 );
@@ -9859,17 +9851,14 @@ LGraphNode.prototype.executeAction = function(action)
                     ctx.strokeStyle = outline_color;
                     ctx.fillStyle = background_color;
                     ctx.beginPath();
-					if(show_text) {
-                        LCTXUtil.roundRect(ctx, margin, y, widget_width - margin * 2, H, [H * 0.5] );
-                    }
-					else {
-                        ctx.rect(margin, y, widget_width - margin * 2, H );
-                    }
+					if(show_text)
+	                    ctx.roundRect(margin, y, widget_width - margin * 2, H, [H * 0.5] );
+					else
+	                    ctx.rect(margin, y, widget_width - margin * 2, H );
                     ctx.fill();
                     if (show_text) {
-						if(!w.disabled) {
-                            ctx.stroke();
-                        }
+						if(!w.disabled)
+		                    ctx.stroke();
                         ctx.fillStyle = text_color;
 						if(!w.disabled)
 						{
@@ -9922,18 +9911,15 @@ LGraphNode.prototype.executeAction = function(action)
                     ctx.strokeStyle = outline_color;
                     ctx.fillStyle = background_color;
                     ctx.beginPath();
-                    if (show_text) {
-                        LCTXUtil.roundRect(ctx, margin, y, widget_width - margin * 2, H, [H * 0.5]);
-                    }
-					else {
-                        ctx.rect( margin, y, widget_width - margin * 2, H );
-                    }
+                    if (show_text)
+	                    ctx.roundRect(margin, y, widget_width - margin * 2, H, [H * 0.5]);
+					else
+	                    ctx.rect( margin, y, widget_width - margin * 2, H );
                     ctx.fill();
-                    if (show_text) {
-						if(!w.disabled) {
+	                if (show_text) {
+						if(!w.disabled)
 							ctx.stroke();
-                        }
-                        ctx.save();
+    					ctx.save();
 						ctx.beginPath();
 						ctx.rect(margin, y, widget_width - margin * 2, H);
 						ctx.clip();
@@ -14122,10 +14108,10 @@ LGraphNode.prototype.executeAction = function(action)
 				return;
 			}
 			if( !is_edge_point ) //not edges
-				point[0] = LMathUtil.clamp(x,0,1);
+				point[0] = LMathUtil.clamp(x, 0, 1);
 			else
 				point[0] = s == 0 ? 0 : 1;
-			point[1] = 1.0 - LMathUtil.clamp(y,0,1);
+			point[1] = 1.0 - LMathUtil.clamp(y, 0, 1);
 			points.sort(function(a,b){ return a[0] - b[0]; });
 			this.selected = points.indexOf(point);
 			this.must_update = true;
@@ -14274,6 +14260,13 @@ LGraphNode.prototype.executeAction = function(action)
 		}
 	}
 
+    var LMathUtil = (global.LMathUtil = {
+        clamp : function(v, a, b) {
+            return a > v ? a : b < v ? b : v;
+        }
+    });
+    LiteGraph.LMathUtil = LMathUtil;
+
     if (typeof window != "undefined" && !window["requestAnimationFrame"]) {
         window.requestAnimationFrame =
             window.webkitRequestAnimationFrame ||
@@ -14282,92 +14275,6 @@ LGraphNode.prototype.executeAction = function(action)
                 window.setTimeout(callback, 1000 / 60);
             };
     }
-
-    var LMathUtil = (global.LMathUtil = {
-        clamp : function(v, a, b) {
-            return a > v ? a : b < v ? b : v;
-        }
-    });
-    LiteGraph.LMathUtil = LMathUtil;
-
-    var LCTXUtil = (global.LCTXUtil = {
-        //like ctx.rect but rounded corners
-        roundRect : function(
-            ctx,
-            x,
-            y,
-            w,
-            h,
-            radius,
-            radius_low
-        ) {
-            var top_left_radius = 0;
-            var top_right_radius = 0;
-            var bottom_left_radius = 0;
-            var bottom_right_radius = 0;
-
-            if ( radius === 0 )
-            {
-                ctx.rect(x,y,w,h);
-                return;
-            }
-
-            if(radius_low === undefined)
-                radius_low = radius;
-
-            //make it compatible with official one
-            if(radius != null && radius.constructor === Array)
-            {
-                if(radius.length == 1)
-                    top_left_radius = top_right_radius = bottom_left_radius = bottom_right_radius = radius[0];
-                else if(radius.length == 2)
-                {
-                    top_left_radius = bottom_right_radius = radius[0];
-                    top_right_radius = bottom_left_radius = radius[1];
-                }
-                else if(radius.length == 4)
-                {
-                    top_left_radius = radius[0];
-                    top_right_radius = radius[1];
-                    bottom_left_radius = radius[2];
-                    bottom_right_radius = radius[3];
-                }
-                else
-                    return;
-            }
-            else //old using numbers
-            {
-                top_left_radius = radius || 0;
-                top_right_radius = radius || 0;
-                bottom_left_radius = radius_low || 0;
-                bottom_right_radius = radius_low || 0;
-            }
-
-            //top right
-            ctx.moveTo(x + top_left_radius, y);
-            ctx.lineTo(x + w - top_right_radius, y);
-            ctx.quadraticCurveTo(x + w, y, x + w, y + top_right_radius);
-
-            //bottom right
-            ctx.lineTo(x + w, y + h - bottom_right_radius);
-            ctx.quadraticCurveTo(
-                x + w,
-                y + h,
-                x + w - bottom_right_radius,
-                y + h
-            );
-
-            //bottom left
-            ctx.lineTo(x + bottom_right_radius, y + h);
-            ctx.quadraticCurveTo(x, y + h, x, y + h - bottom_left_radius);
-
-            //top left
-            ctx.lineTo(x, y + bottom_left_radius);
-            ctx.quadraticCurveTo(x, y, x + top_left_radius, y);
-        }
-    });
-    LiteGraph.LCTXUtil = LCTXUtil;
-
 })(this);
 
 if (typeof exports != "undefined") {
@@ -16245,7 +16152,7 @@ if (typeof exports != "undefined") {
 		if(index != null)
 		{
 			index = Math.floor(index);
-			index = Math.clamp( index, 0, this.outputs ? (this.outputs.length - 2) : 0 );
+			index = LMathUtil.clamp( index, 0, this.outputs ? (this.outputs.length - 2) : 0 );
 			if( index != this.properties.index )
 			{
 				this.properties.index = index;
@@ -16861,7 +16768,7 @@ if (typeof exports != "undefined") {
         this._remainder = steps % 1;
         steps = steps | 0;
 
-        var v = Math.clamp(
+        var v = LMathUtil.clamp(
             this.properties.value + steps * this.properties.step,
             this.properties.min,
             this.properties.max
@@ -16874,7 +16781,7 @@ if (typeof exports != "undefined") {
     WidgetNumber.prototype.onMouseUp = function(e, pos) {
         if (e.click_time < 200) {
             var steps = pos[1] > this.size[1] * 0.5 ? -1 : 1;
-            this.properties.value = Math.clamp(
+            this.properties.value = LMathUtil.clamp(
                 this.properties.value + steps * this.properties.step,
                 this.properties.min,
                 this.properties.max
@@ -17939,7 +17846,7 @@ if (typeof exports != "undefined") {
 
         this._last_v = ((v - in_min) / (in_max - in_min)) * (out_max - out_min) + out_min;
         this.setOutputData(0, this._last_v);
-        this.setOutputData(1, Math.clamp( this._last_v, out_min, out_max ));
+        this.setOutputData(1, LMathUtil.clamp( this._last_v, out_min, out_max ));
     };
 
     MathRange.prototype.onDrawBackground = function(ctx) {
@@ -18269,7 +18176,7 @@ if (typeof exports != "undefined") {
         var edge1 = this.properties.B;
 
         // Scale, bias and saturate x to 0..1 range
-        v = Math.clamp((v - edge0) / (edge1 - edge0), 0.0, 1.0);
+        v = LMathUtil.clamp((v - edge0) / (edge1 - edge0), 0.0, 1.0);
         // Evaluate polynomial
         v = v * v * (3 - 2 * v);
 
@@ -19645,7 +19552,7 @@ if (typeof exports != "undefined") {
 			for(var i = 0; i < 3; ++i)
 			{
 				var r = range_max[i] - range_min[i];
-				this._clamped[i] = Math.clamp( this._value[i], range_min[i], range_max[i] );
+				this._clamped[i] = LMathUtil.clamp( this._value[i], range_min[i], range_max[i] );
 				if(r == 0)
 				{
 					this._value[i] = (target_min[i] + target_max[i]) * 0.5;
@@ -19654,7 +19561,7 @@ if (typeof exports != "undefined") {
 
 				var n = (this._value[i] - range_min[i]) / r;
 				if(this.properties.clamp)
-					n = Math.clamp(n,0,1);
+					n = LMathUtil.clamp(n,0,1);
 				var t = target_max[i] - target_min[i];
 				this._value[i] = target_min[i] + n * t;
 			}
@@ -20091,10 +19998,10 @@ if (typeof exports != "undefined") {
                 ctx.strokeStyle = colors[i];
                 ctx.beginPath();
                 var v = values[0] * scale * -1 + offset;
-                ctx.moveTo(0, Math.clamp(v, 0, size[1]));
+                ctx.moveTo(0, LMathUtil.clamp(v, 0, size[1]));
                 for (var j = 1; j < values.length && j < size[0]; ++j) {
                     var v = values[j] * scale * -1 + offset;
-                    ctx.lineTo(j, Math.clamp(v, 0, size[1]));
+                    ctx.lineTo(j, LMathUtil.clamp(v, 0, size[1]));
                 }
                 ctx.stroke();
             }
@@ -23002,7 +22909,7 @@ void main() {\n\
 			LGraphTextureLinearAvgSmooth._shader_avg = new GL.Shader( GL.Shader.SCREEN_VERTEX_SHADER, LGraphTextureLinearAvgSmooth.pixel_shader_avg );
 		}
 
-		var samples = Math.clamp(this.properties.samples,0,64);
+		var samples = LMathUtil.clamp(this.properties.samples,0,64);
 		var frame = this.frame;
 		var interval = this.properties.frames_interval;
 
@@ -23633,11 +23540,11 @@ void main() {\n\
 		var c = this.properties.color;
 		ctx.fillStyle =
 			"rgb(" +
-			Math.floor(Math.clamp(c[0], 0, 1) * 255) +
+			Math.floor(LMathUtil.clamp(c[0], 0, 1) * 255) +
 			"," +
-			Math.floor(Math.clamp(c[1], 0, 1) * 255) +
+			Math.floor(LMathUtil.clamp(c[1], 0, 1) * 255) +
 			"," +
-			Math.floor(Math.clamp(c[2], 0, 1) * 255) +
+			Math.floor(LMathUtil.clamp(c[2], 0, 1) * 255) +
 			")";
 		if (this.flags.collapsed) {
 			this.boxcolor = ctx.fillStyle;
@@ -24465,7 +24372,7 @@ LGraphTextureBlur.pixel_shader = "precision highp float;\n\
 		var currentSource = currentDestination;
 
 		var iterations = this.iterations;
-		iterations = Math.clamp(iterations, 1, 16) | 0;
+		iterations = LMathUtil.clamp(iterations, 1, 16) | 0;
 		var texel_size = uniforms.u_texel_size;
 		var intensity = this.intensity;
 
@@ -25603,14 +25510,14 @@ void main(void){\n\
 		{
 			if(split)
 			{
-				values[i*4] = Math.clamp( this.sampleCurve(i/num,this._points.R)*255,0,255);
-				values[i*4+1] = Math.clamp( this.sampleCurve(i/num,this._points.G)*255,0,255);
-				values[i*4+2] = Math.clamp( this.sampleCurve(i/num,this._points.B)*255,0,255);
+				values[i*4] = LMathUtil.clamp( this.sampleCurve(i/num,this._points.R)*255,0,255);
+				values[i*4+1] = LMathUtil.clamp( this.sampleCurve(i/num,this._points.G)*255,0,255);
+				values[i*4+2] = LMathUtil.clamp( this.sampleCurve(i/num,this._points.B)*255,0,255);
 			}
 			else
 			{
 				var v = this.sampleCurve(i/num);//sample curve
-				values[i*4] = values[i*4+1] = values[i*4+2] = Math.clamp(v*255,0,255);
+				values[i*4] = values[i*4+1] = values[i*4+2] = LMathUtil.clamp(v*255,0,255);
 			}
 			values[i*4+3] = 255; //alpha fixed
 		}
@@ -31844,13 +31751,13 @@ function LGraphGeometryDisplace() {
                     case "value1":
                         var v = this.getInputData(i);
                         if (v != null) {
-                            this.properties.value1 = Math.clamp(v|0,0,127);
+                            this.properties.value1 = LMathUtil.clamp(v|0,0,127);
                         }
                         break;
                     case "value2":
                         var v = this.getInputData(i);
                         if (v != null) {
-                            this.properties.value2 = Math.clamp(v|0,0,127);
+                            this.properties.value2 = LMathUtil.clamp(v|0,0,127);
                         }
                         break;
                 }
