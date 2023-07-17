@@ -13752,7 +13752,7 @@ LGraphNode.prototype.executeAction = function(action)
         if (!disabled) {
             element.addEventListener("click", inner_onclick);
         }
-        if (options.autoopen) {
+        if (!disabled && options.autoopen) {
 			LiteGraph.pointerListenerAdd(element,"enter",inner_over);
         }
 
