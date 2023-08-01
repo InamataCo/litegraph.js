@@ -109,7 +109,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "../src/litegraph.js",
-            "line": 13512,
+            "line": 13516,
             "description": "ContextMenu from LiteGUI",
             "is_constructor": 1,
             "params": [
@@ -2589,7 +2589,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9951,
+            "line": 9955,
             "description": "process an event on widgets",
             "itemtype": "method",
             "name": "processNodeWidgets",
@@ -2597,7 +2597,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10155,
+            "line": 10159,
             "description": "draws every group area in the background",
             "itemtype": "method",
             "name": "drawGroups",
@@ -2605,7 +2605,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10211,
+            "line": 10215,
             "description": "resizes the canvas to a given size, if no size is passed, then it tries to fill the parentNode",
             "itemtype": "method",
             "name": "resize",
@@ -2613,7 +2613,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10233,
+            "line": 10237,
             "description": "switches to live mode (node shapes are not rendered, only the content)\nthis feature was designed when graphs where meant to create user interfaces",
             "itemtype": "method",
             "name": "switchLiveMode",
@@ -2621,7 +2621,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10343,
+            "line": 10347,
             "description": "Determines the furthest nodes in each direction",
             "params": [
                 {
@@ -2638,7 +2638,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10379,
+            "line": 10383,
             "description": "Determines the furthest nodes in each direction for the currently selected nodes",
             "return": {
                 "description": "}",
@@ -2648,7 +2648,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10387,
+            "line": 10391,
             "params": [
                 {
                     "name": "nodes",
@@ -2688,15 +2688,15 @@
         },
         {
             "message": "Missing item type\nDetermines the furthest nodes in each direction",
-            "line": " ../src/litegraph.js:10343"
+            "line": " ../src/litegraph.js:10347"
         },
         {
             "message": "Missing item type\nDetermines the furthest nodes in each direction for the currently selected nodes",
-            "line": " ../src/litegraph.js:10379"
+            "line": " ../src/litegraph.js:10383"
         },
         {
             "message": "Missing item type",
-            "line": " ../src/litegraph.js:10387"
+            "line": " ../src/litegraph.js:10391"
         }
     ]
 }

@@ -9923,7 +9923,11 @@ LGraphNode.prototype.executeAction = function(action)
                         ctx.textAlign = &quot;center&quot;;
                         ctx.fillStyle = text_color;
                         ctx.fillText(
-                            w.label || w.name + &quot;  &quot; + Number(w.value).toFixed(3),
+                            w.label || w.name + &quot;  &quot; + Number(w.value).toFixed(
+                                                            w.options.precision != null
+                                                                ? w.options.precision
+                                                                : 3
+                                                        ),
                             widget_width * 0.5,
                             y + H * 0.7
                         );
