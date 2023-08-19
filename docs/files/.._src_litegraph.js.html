@@ -6312,7 +6312,11 @@ LGraphNode.prototype.executeAction = function(action)
 						}
 					}
 				}
-			}
+			} else if (!skip_action &amp;&amp; this.allow_dragcanvas) {
+            	//console.log(&quot;pointerevents: dragging_canvas start from middle button&quot;);
+            	this.dragging_canvas = true;
+            }
+
         	
         } else if (e.which == 3 || this.pointer_is_double) {
 			

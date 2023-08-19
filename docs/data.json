@@ -109,7 +109,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "../src/litegraph.js",
-            "line": 13516,
+            "line": 13520,
             "description": "ContextMenu from LiteGUI",
             "is_constructor": 1,
             "params": [
@@ -2294,7 +2294,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 6290,
+            "line": 6294,
             "description": "Called when a mouse move event has to be processed",
             "itemtype": "method",
             "name": "processMouseMove",
@@ -2302,7 +2302,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 6547,
+            "line": 6551,
             "description": "Called when a mouse up event has to be processed",
             "itemtype": "method",
             "name": "processMouseUp",
@@ -2310,7 +2310,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 6859,
+            "line": 6863,
             "description": "Called when a mouse wheel event has to be processed",
             "itemtype": "method",
             "name": "processMouseWheel",
@@ -2318,7 +2318,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 6895,
+            "line": 6899,
             "description": "returns true if a position (in graph space) is on top of a node little corner box",
             "itemtype": "method",
             "name": "isOverNodeBox",
@@ -2326,7 +2326,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 6916,
+            "line": 6920,
             "description": "returns the INDEX if a position (in graph space) is on top of a node input slot",
             "itemtype": "method",
             "name": "isOverNodeInput",
@@ -2334,7 +2334,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 6962,
+            "line": 6966,
             "description": "returns the INDEX if a position (in graph space) is on top of a node output slot",
             "itemtype": "method",
             "name": "isOverNodeOuput",
@@ -2342,7 +2342,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7008,
+            "line": 7012,
             "description": "process a key event",
             "itemtype": "method",
             "name": "processKey",
@@ -2350,7 +2350,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7235,
+            "line": 7239,
             "description": "process a item drop event on top the canvas",
             "itemtype": "method",
             "name": "processDrop",
@@ -2358,7 +2358,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7357,
+            "line": 7361,
             "description": "selects a given node (or adds it to the current selection)",
             "itemtype": "method",
             "name": "selectNode",
@@ -2366,7 +2366,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7372,
+            "line": 7376,
             "description": "selects several nodes (or adds them to the current selection)",
             "itemtype": "method",
             "name": "selectNodes",
@@ -2374,7 +2374,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7420,
+            "line": 7424,
             "description": "removes a node from the current selection",
             "itemtype": "method",
             "name": "deselectNode",
@@ -2382,7 +2382,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7455,
+            "line": 7459,
             "description": "removes all nodes from the current selection",
             "itemtype": "method",
             "name": "deselectAllNodes",
@@ -2390,7 +2390,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7485,
+            "line": 7489,
             "description": "deletes all nodes in the current selection from the graph",
             "itemtype": "method",
             "name": "deleteSelectedNodes",
@@ -2398,7 +2398,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7521,
+            "line": 7525,
             "description": "centers the camera on a given node",
             "itemtype": "method",
             "name": "centerOnNode",
@@ -2406,7 +2406,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7537,
+            "line": 7541,
             "description": "adds some useful properties to a mouse event, like the position in graph coordinates",
             "itemtype": "method",
             "name": "adjustMouseEvent",
@@ -2414,7 +2414,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7566,
+            "line": 7570,
             "description": "changes the zoom level of the graph (default is 1), you can pass also a place used to pivot the zoom",
             "itemtype": "method",
             "name": "setZoom",
@@ -2422,7 +2422,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7596,
+            "line": 7600,
             "description": "converts a coordinate from graph coordinates to canvas2D coordinates",
             "itemtype": "method",
             "name": "convertOffsetToCanvas",
@@ -2430,7 +2430,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7604,
+            "line": 7608,
             "description": "converts a coordinate from Canvas2D coordinates to graph space",
             "itemtype": "method",
             "name": "convertCanvasToOffset",
@@ -2438,7 +2438,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7621,
+            "line": 7625,
             "description": "brings a node to front (above all other nodes)",
             "itemtype": "method",
             "name": "bringToFront",
@@ -2446,7 +2446,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7635,
+            "line": 7639,
             "description": "sends a node to the back (below all other nodes)",
             "itemtype": "method",
             "name": "sendToBack",
@@ -2454,7 +2454,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7654,
+            "line": 7658,
             "description": "checks which nodes are visible (inside the camera area)",
             "itemtype": "method",
             "name": "computeVisibleNodes",
@@ -2462,7 +2462,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7679,
+            "line": 7683,
             "description": "renders the whole canvas content, by rendering in two separated canvas, one containing the background grid and the connections, and one containing the nodes)",
             "itemtype": "method",
             "name": "draw",
@@ -2470,7 +2470,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7716,
+            "line": 7720,
             "description": "draws the front canvas (the one containing all the nodes)",
             "itemtype": "method",
             "name": "drawFrontCanvas",
@@ -2478,7 +2478,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 7983,
+            "line": 7987,
             "description": "draws the panel in the corner that shows subgraph properties",
             "itemtype": "method",
             "name": "drawSubgraphPanel",
@@ -2486,7 +2486,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 8190,
+            "line": 8194,
             "description": "draws some useful stats in the corner of the canvas",
             "itemtype": "method",
             "name": "renderInfo",
@@ -2494,7 +2494,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 8216,
+            "line": 8220,
             "description": "draws the back canvas (the one containing the background and the connections)",
             "itemtype": "method",
             "name": "drawBackCanvas",
@@ -2502,7 +2502,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 8404,
+            "line": 8408,
             "description": "draws the given node inside the canvas",
             "itemtype": "method",
             "name": "drawNode",
@@ -2510,7 +2510,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 8893,
+            "line": 8897,
             "description": "draws the shape of the given node in the canvas",
             "itemtype": "method",
             "name": "drawNodeShape",
@@ -2518,7 +2518,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9224,
+            "line": 9228,
             "description": "draws every connection visible in the canvas\nOPTIMIZE THIS: pre-catch connections position instead of recomputing them every time",
             "itemtype": "method",
             "name": "drawConnections",
@@ -2526,7 +2526,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9350,
+            "line": 9354,
             "description": "draws a link between two points",
             "itemtype": "method",
             "name": "renderLink",
@@ -2581,7 +2581,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9728,
+            "line": 9732,
             "description": "draws the widgets stored inside a node",
             "itemtype": "method",
             "name": "drawNodeWidgets",
@@ -2589,7 +2589,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 9955,
+            "line": 9959,
             "description": "process an event on widgets",
             "itemtype": "method",
             "name": "processNodeWidgets",
@@ -2597,7 +2597,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10159,
+            "line": 10163,
             "description": "draws every group area in the background",
             "itemtype": "method",
             "name": "drawGroups",
@@ -2605,7 +2605,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10215,
+            "line": 10219,
             "description": "resizes the canvas to a given size, if no size is passed, then it tries to fill the parentNode",
             "itemtype": "method",
             "name": "resize",
@@ -2613,7 +2613,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10237,
+            "line": 10241,
             "description": "switches to live mode (node shapes are not rendered, only the content)\nthis feature was designed when graphs where meant to create user interfaces",
             "itemtype": "method",
             "name": "switchLiveMode",
@@ -2621,7 +2621,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10347,
+            "line": 10351,
             "description": "Determines the furthest nodes in each direction",
             "params": [
                 {
@@ -2638,7 +2638,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10383,
+            "line": 10387,
             "description": "Determines the furthest nodes in each direction for the currently selected nodes",
             "return": {
                 "description": "}",
@@ -2648,7 +2648,7 @@
         },
         {
             "file": "../src/litegraph.js",
-            "line": 10391,
+            "line": 10395,
             "params": [
                 {
                     "name": "nodes",
@@ -2688,15 +2688,15 @@
         },
         {
             "message": "Missing item type\nDetermines the furthest nodes in each direction",
-            "line": " ../src/litegraph.js:10347"
+            "line": " ../src/litegraph.js:10351"
         },
         {
             "message": "Missing item type\nDetermines the furthest nodes in each direction for the currently selected nodes",
-            "line": " ../src/litegraph.js:10383"
+            "line": " ../src/litegraph.js:10387"
         },
         {
             "message": "Missing item type",
-            "line": " ../src/litegraph.js:10391"
+            "line": " ../src/litegraph.js:10395"
         }
     ]
 }
