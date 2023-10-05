@@ -11,7 +11,7 @@ root_path = "./"
 
 #arguments
 parser = argparse.ArgumentParser(description='Deploy a JS app creating a minifyed version checking for errors.')
-parser.add_argument('input_file', 
+parser.add_argument('input_file',
                    help='the path to the file with a list of all the JS files')
 
 parser.add_argument('-o', dest='output_file', action='store',
@@ -22,7 +22,7 @@ parser.add_argument('-o2', dest='fullcode_output_file', action='store',
                    default=None,
                    help='Specify an output for the full code version')
 
-#parser.add_argument('output_file', 
+#parser.add_argument('output_file',
 #                   help='the filename where to save the min version')
 
 parser.add_argument('--all', dest='all_files', action='store_const',
@@ -45,7 +45,7 @@ sys.stderr.write(" + Root folder: " + root_path + "\n")
 def packJSCode(files):
     f1, fullcode_path = tempfile.mkstemp() #create temporary file
     data = "//packer version\n\n"
-    
+
     for filename in files:
         filename = filename.strip()
         if len(filename) == 0 or filename[0] == "#":
@@ -59,11 +59,11 @@ def packJSCode(files):
         if check_files_individually:
               os.system("java -jar %s --js %s --js_output_file %s" % (compiler_path, src_file, "temp.js") )
         sys.stderr.write('\033[92m' + "OK\n" + '\033[0m')
-    
+
     os.write(f1, str.encode(data))
     os.close(f1)
-    
-    #print(" + Compiling all...")
+
+    #print " + Compiling all..."
     #os.system("java -jar %s --js %s --js_output_file %s" % (compiler_path, fullcode_path, output_file) )
     #print(" * Done")
     return fullcode_path
